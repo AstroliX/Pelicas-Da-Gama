@@ -28,13 +28,13 @@ public class SC_ItemSpawnAnim : MonoBehaviour
 
         if (timer < animationLength)
         {
-            size = Curve.Evaluate(lerpRatio);
+            size = Curve.Evaluate(lerpRatio) / 2f;
             myRT.localScale = new Vector2(size, size);
         }
 
-        else
+        /*else
         {
             timer = 0;
-        }
+        }*/
     }
 }
