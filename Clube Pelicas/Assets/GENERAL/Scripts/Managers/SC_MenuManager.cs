@@ -8,30 +8,44 @@ namespace Pelicas
 {
     public class SC_MenuManager : MonoBehaviour
     {
-
+        [Header("Bools")]
         public bool enableMusic;
         public bool enableSFX;
         public bool isMainMenu;
         bool isPauseMenu;
 
+        [Space]
+        [Header("Menus")]
         [SerializeField] GameObject helpMenu;
         [SerializeField] GameObject pauseMenu;
 
+        SC_CursorController cursor;
+        SC_PlayerController player;
+
         #region - UNITY_FUNCTIONS -
+        private void Awake()
+        {
+            cursor = FindObjectOfType<SC_CursorController>();
+            player = FindObjectOfType<SC_PlayerController>();
+        }
+
+        private void Start()
+        {
+            
+        }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                
                 if (!isMainMenu && !isPauseMenu)
                 {
+                    
                     PauseGame();
                 }
 
-                if(!isMainMenu && isPauseMenu)
-                {
-                    ResumeGame();
-                }
+                
             }
         }
 
@@ -57,9 +71,12 @@ namespace Pelicas
 
         public void ResumeGame()
         {
+            cursor.DeactivateCursor();
             pauseMenu.SetActive(false);
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
             isPauseMenu = false;
+            player.canMove = true;
+            player.canDisplay = true;
         }
 
         public void QuitGame()
@@ -74,9 +91,13 @@ namespace Pelicas
 
         void PauseGame()
         {
+            player.canMove = false;
+            player.canDisplay = false;
             pauseMenu.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             isPauseMenu = true;
+            cursor.ActivateCursor();
+            Debug.Log("Pause");
         }
 
         #endregion
