@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_SkyboxGradient
+  m_Shader: {fileID: -6465566751694194690, guid: 8d7eed837f39bab4daad876e5231bce1, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_619002f7bac6468d80162b153b8b6175: 0.7
+    - Vector1_8d8cd3023e0449b98f3f31f14b75c13b: 0.89
+    - Vector1_d463ce5c5a764745880d75868043d68a: 15.54
+    m_Colors:
+    - Color_1f484719bb95464e8536fc706fe1b93b: {r: 1, g: 0.70907825, b: 0.1372549, a: 1}
+    - Color_530b3a63a2eb48a3826da09486edae90: {r: 0.21787111, g: 0.6712441, b: 0.9056604, a: 1}
+  m_BuildTextureStacks: []
