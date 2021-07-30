@@ -144,10 +144,17 @@ namespace Pelicas
 
             nbrOfResource = 0;
 
+            StartCoroutine(StartDelay());
+
+            IEnumerator StartDelay()
+
+            {
+                yield return new WaitForSeconds(2);
+
+                StartCoroutine(CollectingResources());
+            }
 
 
-            StartCoroutine(CollectingResources());
-            
         }
 
         IEnumerator CollectingResources()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6333258068194840617}
   - component: {fileID: 6333258068194840612}
   - component: {fileID: 6333258068194840619}
+  - component: {fileID: 5310912965036242664}
   m_Layer: 5
   m_Name: PREF_Fade
   m_TagString: Untagged
@@ -85,7 +86,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333258068194840623}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 687a7415c73850a46a60104fe3ab26ca, type: 2}
   m_CullingMode: 0
@@ -112,3 +113,22 @@ MonoBehaviour:
   shader: {fileID: -6465566751694194690, guid: 5df60e2f1b501df46b8684dcaeede735, type: 3}
   Size: 3
   Position: {x: 0.03, y: 0.2}
+--- !u!111 &5310912965036242664
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333258068194840623}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: cb1624b8cba4ee641a2674124996c2ff, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: cb1624b8cba4ee641a2674124996c2ff, type: 2}
+  - {fileID: 7400000, guid: 0727ee8a0a7123344b35caba9fa62d35, type: 2}
+  - {fileID: 7400000, guid: eed9dd7d9b3b946459ab19f1ea55b7e6, type: 2}
+  - {fileID: 7400000, guid: 8a2f352797627664ca70f5c61c3fb1f0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
