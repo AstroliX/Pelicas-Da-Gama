@@ -152,7 +152,7 @@ RectTransform:
   m_GameObject: {fileID: 36393348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4779172, y: 1.4779172, z: 1.4779172}
+  m_LocalScale: {x: 1.219592, y: 1.219592, z: 1.219592}
   m_Children:
   - {fileID: 2003987374}
   m_Father: {fileID: 862236891}
@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 662, y: -33}
-  m_SizeDelta: {x: 202.4997, y: 109.9728}
+  m_AnchoredPosition: {x: 661.9999, y: -33}
+  m_SizeDelta: {x: 243.9, y: 109.973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &36393350
 Animator:
@@ -3623,7 +3623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Check rare
+  m_text: Ver recursos raros
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -3999,7 +3999,6 @@ GameObject:
   m_Component:
   - component: {fileID: 764582735}
   - component: {fileID: 764582734}
-  - component: {fileID: 764582733}
   - component: {fileID: 764582732}
   m_Layer: 0
   m_Name: Camera UI
@@ -4040,14 +4039,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &764582733
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764582731}
-  m_Enabled: 1
 --- !u!20 &764582734
 Camera:
   m_ObjectHideFlags: 0
@@ -4133,7 +4124,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782176599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -18}
   m_LocalScale: {x: 2.3641, y: 2.3641, z: 2.3641}
   m_Children:
   - {fileID: 724235685}
@@ -4142,8 +4133,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 96}
-  m_SizeDelta: {x: 227.84, y: 109.973}
+  m_AnchoredPosition: {x: 288, y: 186}
+  m_SizeDelta: {x: 282.191, y: 109.973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &782176601
 Animator:
@@ -9779,7 +9770,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Check normal
+  m_text: Ver recursos normais
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -10063,7 +10054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return
+  m_text: Voltar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -10272,9 +10263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Go to normal
-
-'
+  m_text: Recursos normais
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -10771,7 +10760,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return
+  m_text: Voltar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -11826,7 +11815,7 @@ RectTransform:
   m_GameObject: {fileID: 1302479915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4779172, y: 1.4779172, z: 1.4779172}
+  m_LocalScale: {x: 1.2612988, y: 1.2612988, z: 1.2612988}
   m_Children:
   - {fileID: 1024585981}
   m_Father: {fileID: 1583444855}
@@ -11834,8 +11823,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 713, y: -76.000015}
-  m_SizeDelta: {x: 202.4997, y: 109.9728}
+  m_AnchoredPosition: {x: 689, y: -76.000015}
+  m_SizeDelta: {x: 280.126, y: 109.973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1302479917
 Animator:
@@ -19507,7 +19496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return
+  m_text: Voltar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -20685,7 +20674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go to rare
+  m_text: Recursos raros
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -21437,7 +21426,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090375445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 29}
   m_LocalScale: {x: 2.3641, y: 2.3641, z: 2.3641}
   m_Children:
   - {fileID: 983128899}
@@ -21446,8 +21435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 587.06744, y: 95.999985}
-  m_SizeDelta: {x: 227.84, y: 109.973}
+  m_AnchoredPosition: {x: 300, y: -50}
+  m_SizeDelta: {x: 312.602, y: 109.973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2090375447
 Animator:
@@ -22555,7 +22544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press T bro, just do it
+  m_text: Pressione T para falar com o Advisor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
   m_sharedMaterial: {fileID: 6692984350789418633, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
@@ -23420,7 +23409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return to city
+  m_text: Voltar para a cidade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -23554,7 +23543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure captain ?
+  m_text: "Tem certeza capit\xE3o?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
   m_sharedMaterial: {fileID: 6692984350789418633, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
@@ -23724,7 +23713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eww no
+  m_text: "N\xE3o"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -23839,7 +23828,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489681318838860373}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -12.999962}
   m_LocalScale: {x: 2.3641, y: 2.3641, z: 2.3641}
   m_Children:
   - {fileID: 489681318308847104}
@@ -23848,8 +23837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 376.33994, y: -119}
-  m_SizeDelta: {x: 222.22, y: 109.973}
+  m_AnchoredPosition: {x: 480.7641, y: -50.99999}
+  m_SizeDelta: {x: 310.562, y: 109.973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &489681318838860373
 GameObject:
@@ -24434,7 +24423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Sair
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -24586,7 +24575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes babe
+  m_text: Sim
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -24682,7 +24671,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489681320102051489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 17}
   m_LocalScale: {x: 1.4779172, y: 1.4779172, z: 1.4779172}
   m_Children:
   - {fileID: 489681319895402098}
@@ -24691,7 +24680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: -161}
+  m_AnchoredPosition: {x: 773, y: -246}
   m_SizeDelta: {x: 202.4997, y: 109.9728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &489681320102051489
@@ -66939,7 +66928,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8594736270028262799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -13.000015}
   m_LocalScale: {x: 2.3641, y: 2.3641, z: 2.3641}
   m_Children:
   - {fileID: 8594736270587423443}
@@ -66948,7 +66937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99, y: -119}
+  m_AnchoredPosition: {x: -99, y: -51.000004}
   m_SizeDelta: {x: 202.4997, y: 109.9728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8594736270028262799
@@ -67093,7 +67082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Check stock
+  m_text: "Ver o por\xE3o"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d17f55f6b32dbe4ea851e0d78947a77, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7169bc850d3cdd5409eca0f1aba9117d, type: 2}
@@ -67219,7 +67208,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8594736270638686266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8594736270712435906}
@@ -67228,7 +67217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 335.72, y: 169}
+  m_AnchoredPosition: {x: 335.72, y: 195}
   m_SizeDelta: {x: 1120, y: 244.624}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8594736270638686263
@@ -67322,7 +67311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Good morning captain, what should we do ?
+  m_text: "Ora boas capit\xE3o, o que voc\xEA quer fazer?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
   m_sharedMaterial: {fileID: 6692984350789418633, guid: 4a9d57e0d217d9940b7121fdfcf93d02, type: 2}
