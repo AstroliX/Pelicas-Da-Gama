@@ -10,6 +10,7 @@ namespace Pelicas
         private float inputHorizontal;
         public bool canMove;
         Rigidbody rb;
+        Animation anim;
         bool firstTimeOnSea;
 
         SC_KingSystem king;
@@ -20,7 +21,7 @@ namespace Pelicas
         {
             king = FindObjectOfType<SC_KingSystem>();
             rb = GetComponent<Rigidbody>();
-           
+            anim = GetComponent<Animation>();
         }
 
         private void Start()
@@ -32,36 +33,30 @@ namespace Pelicas
 
         void Update()
         {
-
-
+            anim.Play("ANIM_Idle");
             if (canMove)
             {
-                if (Input.GetKey(KeyCode.D))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, 90, 0);
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, -90, 0);
-                }
-
-
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, 90, 0);
-                }
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, -90, 0);
-                }
-
                 inputHorizontal = Input.GetAxisRaw("Horizontal");
                 rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                {
+
+                    transform.rotation = Quaternion.Euler(0, 90, 0);
+                    anim.Play("ANIM_Run");
+                 
+                }
+
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                {
+
+                    transform.rotation = Quaternion.Euler(0, -90, 0);
+                    anim.Play("ANIM_Run");
+
+                }
             }
+
+            
 
             
         }
@@ -75,6 +70,7 @@ namespace Pelicas
         #endregion
 
         #region - PRIVATE_FUNCTIONS -
+
 
 
         #endregion

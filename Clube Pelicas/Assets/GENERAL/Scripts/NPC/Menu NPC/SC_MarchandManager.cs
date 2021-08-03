@@ -109,12 +109,14 @@ namespace Pelicas
 
 
         SC_ResourcesManager resource;
+        [SerializeField] GameObject npcAnim;
 
         #region - UNITY_FUNCTIONS -
 
         private void Awake()
         {
             resource = FindObjectOfType<SC_ResourcesManager>();
+
         }
 
         private void Update()
@@ -171,6 +173,7 @@ namespace Pelicas
         IEnumerator YouDontHaveThisItem()
         {
             fb_YouDontHaveThisItem.SetActive(true);
+            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
             yield return new WaitForSecondsRealtime(2);
             fb_YouDontHaveThisItem.SetActive(false);
         }
@@ -178,6 +181,7 @@ namespace Pelicas
         IEnumerator YouDontHaveEnoughGold()
         {
             fb_YouDontHaveEnoughGold.SetActive(true);
+            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
             yield return new WaitForSecondsRealtime(2);
             fb_YouDontHaveEnoughGold.SetActive(false);
         }
@@ -248,6 +252,7 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("diamond", resource.diamond);
                 PlayerPrefs.SetInt("gold", resource.gold);
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -267,6 +272,7 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("pearl", resource.pearl);
                 PlayerPrefs.SetInt("gold", resource.gold);
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -286,6 +292,7 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoFruit_1", resource.exoFruit_1);
                 PlayerPrefs.SetInt("gold", resource.gold);
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -305,6 +312,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoFruit_2", resource.exoFruit_2);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -324,6 +333,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoLeaf_1", resource.exoLeaf_1);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -344,6 +355,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoLeaf_2", resource.exoLeaf_2);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -369,6 +382,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("tomato", resource.tomato);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -388,6 +403,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("pepper", resource.pepper);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -407,6 +424,9 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("nativeGift", resource.nativeGift);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy(); ;
             }
             else
             {
@@ -426,6 +446,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("vanillaPlant", resource.vanillaPlant);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -445,6 +467,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("coconut", resource.coconut);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -465,6 +489,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("wood", resource.wood);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -485,6 +511,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("iron", resource.iron);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -511,6 +539,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("diamond", resource.diamond);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -530,6 +560,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("pearl", resource.pearl);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -549,6 +581,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoFruit_1", resource.exoFruit_1);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -568,6 +602,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoFruit_2", resource.exoFruit_2);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -587,6 +623,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoLeaf_1", resource.exoLeaf_1);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -606,6 +644,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("exoLeaf_2", resource.exoLeaf_2);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -626,6 +666,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("reputPoint", resource.reputPoint);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -651,6 +693,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("tomato", resource.tomato);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -670,6 +714,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("pepper", resource.pepper);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -690,6 +736,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("vanillaPlant", resource.vanillaPlant);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -709,6 +757,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("coconut", resource.coconut);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -729,6 +779,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("wood", resource.wood);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {
@@ -749,6 +801,8 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("iron", resource.iron);
                 PlayerPrefs.SetInt("gold", resource.gold);
+
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             else
             {

@@ -57,9 +57,12 @@ namespace Pelicas
         [SerializeField] int ironNeeded_2;
         [SerializeField] int ironNeeded_3;
 
+        [Space]
+        [SerializeField] GameObject npcAnim;
 
         SC_UpgradeSystem upgrade;
         SC_ResourcesManager resource;
+        
 
         #region - UNITY_FUNCTIONS -
 
@@ -67,6 +70,7 @@ namespace Pelicas
         {
             upgrade = FindObjectOfType<SC_UpgradeSystem>();
             resource = FindObjectOfType<SC_ResourcesManager>();
+            
         }
 
         private void Update()
@@ -84,6 +88,7 @@ namespace Pelicas
         IEnumerator YouDontHaveEnough()
         {
             uDontHaveEnough.SetActive(true);
+            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
             yield return new WaitForSeconds(3);
             uDontHaveEnough.SetActive(false);
         }
@@ -91,6 +96,7 @@ namespace Pelicas
         IEnumerator YouAlreadyMaxedOut()
         {
             uMaxeOutThisUpgrade.SetActive(true);
+            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
             yield return new WaitForSeconds(3);
             uMaxeOutThisUpgrade.SetActive(false);
         }
@@ -264,6 +270,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
                 {
@@ -285,6 +293,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
                 {
@@ -305,6 +315,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
                 {
@@ -339,6 +351,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
             }
 
@@ -356,6 +370,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
                 {
@@ -371,6 +387,13 @@ namespace Pelicas
                     upgrade.stock += 1;
                     PlayerPrefs.SetInt("stock", 2);
 
+                    resource.wood -= woodNeeded_3;
+                    resource.iron -= ironNeeded_3;
+
+                    PlayerPrefs.SetInt("wood", resource.wood);
+                    PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
                 {
@@ -400,6 +423,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
                 {
@@ -421,6 +446,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
                 {
@@ -441,6 +468,8 @@ namespace Pelicas
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
+
+                    npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
                 }
                 else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
                 {

@@ -20,6 +20,7 @@ namespace Pelicas
         [Space]
         [Header("Bools")]
         public bool canInteract;
+        public bool isTalking;
 
         [Space]
         [Header("King's taxi random shit")]
@@ -37,9 +38,11 @@ namespace Pelicas
 
         Transform T_player;
 
+
         SC_PlayerController playerScript;
         SC_SeaPlayerController seaPlayerScript;
         SC_CursorController cursorScript;
+        SC_NPCAnim npcAnim;
 
 
         #region - UNITY_FUNCTIONS -
@@ -49,8 +52,10 @@ namespace Pelicas
             playerScript = FindObjectOfType<SC_PlayerController>();
             seaPlayerScript = FindObjectOfType<SC_SeaPlayerController>();
             cursorScript = FindObjectOfType<SC_CursorController>();
+            npcAnim = FindObjectOfType<SC_NPCAnim>();
 
             T_player = GameObject.FindGameObjectWithTag("Player").transform;
+
         }
 
         private void Start()
@@ -60,12 +65,7 @@ namespace Pelicas
 
         private void Update()
         {
-            /*if (isTraveling)
-            {
-                canInteract = false;
-                transform.position = Vector2.MoveTowards(transform.position, goToKingTarget.position, speed * Time.deltaTime);
-                T_player.position = Vector2.MoveTowards(T_player.position, goToKingTarget.position, speed * Time.deltaTime);
-            }*/
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -120,6 +120,10 @@ namespace Pelicas
 
         public void LeaveSetup()
         {
+            isTalking = false;
+            npcAnim.PlayNPCAnimBye();
+            
+
             if (!isOnSea)
             {
                 cursorScript.DeactivateCursor();
@@ -191,6 +195,8 @@ namespace Pelicas
 
         void NPCisTalking()
         {
+            isTalking = true;
+            
             if (!isOnSea)
             {
                 
@@ -210,6 +216,9 @@ namespace Pelicas
 
             npcPreview.SetActive(false);
             npcIsTalking.SetActive(true);
+
+            
+            
         }
 
         #endregion

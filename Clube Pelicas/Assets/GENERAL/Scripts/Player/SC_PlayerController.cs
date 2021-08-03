@@ -17,8 +17,6 @@ namespace Pelicas
         [Space]
         [Header("Bools")]
         public bool canMove;
-        public bool wonMiniGame;
-        public bool lostMiniGame;
         public bool canDisplay;
 
         [Space]
@@ -28,39 +26,61 @@ namespace Pelicas
 
         private Vector3 currentImpact;
 
-        SC_ResourcesDisplay resourceD;
+        
+        SC_NPCController npc;
 
         CharacterController characterController;
         Rigidbody rb;
+        Animation anim;
 
         #region - UNITY_FUNCTIONS -
 
         private void Awake()
         {
-
+            npc = FindObjectOfType<SC_NPCController>();
             characterController = GetComponent<CharacterController>();
             rb = GetComponent<Rigidbody>();
+            anim = GetComponent<Animation>();
         }
 
         private void Start()
         {
             canMove = true;
             canDisplay = true;
+            
         }
 
         private void Update()
         {
 
+            
+
+
             if (Input.GetKeyDown(KeyCode.R))
             {
-                ShowResourceDisplay();
+                if (canDisplay)
+                {
+                    ShowResourceDisplay();
+                }
+                
             }
 
-            if (canMove)
+            if (canMove && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)))
             {
                 Move();
+                
             }
-         
+            else
+            {
+                anim.Play("ANIM_Idle");
+            }
+
+
+            if (npc.isTalking)
+            {
+                anim.Play("ANIM_Talk");
+            }
+
         }
 
         #endregion
@@ -91,6 +111,23 @@ namespace Pelicas
             characterController.Move(velocity * Time.deltaTime);
 
             currentImpact = Vector3.Lerp(currentImpact, Vector3.zero, damping * Time.deltaTime);
+
+            anim.Play("ANIM_Run");
+        }
+
+        public void PlayAnimHappy()
+        {
+            anim.Play("ANIM_Happy");
+        }
+
+        public void PlayAnimSad()
+        {
+            anim.Play("ANIM_Sad");
+        }
+        
+        public void PlayAnimBye()
+        {
+            anim.Play("ANIM_Bye");
         }
 
         #endregion

@@ -26,16 +26,21 @@ namespace Pelicas
 
         private void Start()
         {
-            if(PlayerPrefs.GetFloat("crew") <= 0)
+
+            if(PlayerPrefs.GetInt("notFirstInstance") == 1)
             {
-                EndGame();
-                defeatMenu.SetActive(true);
+                if (PlayerPrefs.GetFloat("crew") <= 0)
+                {
+                    EndGame();
+                    defeatMenu.SetActive(true);
+                }
+                else if (PlayerPrefs.GetInt("reputPoint") >= reputToWin)
+                {
+                    EndGame();
+                    winMenu.SetActive(true);
+                }
             }
-            else if(PlayerPrefs.GetInt("reputPoint") >= reputToWin)
-            {
-                EndGame();
-                winMenu.SetActive(true);
-            }
+            
         }
 
         #endregion

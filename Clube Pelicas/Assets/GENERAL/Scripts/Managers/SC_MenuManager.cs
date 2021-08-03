@@ -41,8 +41,11 @@ namespace Pelicas
                 
                 if (!isMainMenu && !isPauseMenu)
                 {
+                    if (player.canDisplay)
+                    {
+                        PauseGame();
+                    }
                     
-                    PauseGame();
                 }
 
                 
