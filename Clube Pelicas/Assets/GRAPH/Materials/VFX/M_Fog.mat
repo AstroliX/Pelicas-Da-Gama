@@ -82,5 +82,5 @@ Material:
     - Color_AFFD055F: {r: 1, g: 1, b: 1, a: 1}
     - Color_E0824245: {r: 0.9622642, g: 0.8608936, b: 0.6581524, a: 0.16862746}
     - Vector3_85b48cb1443743b693c3a55c0b6cab6d: {r: 0, g: 0, b: 0, a: 0}
-    - Vector3_b0e15747df0f4d0b9d1fac0f88e321bb: {r: 14.3, g: 0, b: 22.6, a: 17.88}
+    - Vector3_b0e15747df0f4d0b9d1fac0f88e321bb: {r: 14.3, g: 0, b: 389.04, a: 17.88}
   m_BuildTextureStacks: []
