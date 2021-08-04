@@ -32,7 +32,8 @@ namespace Pelicas
         [SerializeField] GameObject palace;
         bool isTraveling;
 
-        [SerializeField] bool isGoodbye;
+        bool isGoodbye;
+        bool isHappy;
 
         [Space]
         [SerializeField] bool isOnSea;
@@ -129,6 +130,8 @@ namespace Pelicas
             npcGo.GetComponent<SC_NPCAnim>().canIdle = true;
         }
 
+       
+
         #endregion
 
 
@@ -146,6 +149,7 @@ namespace Pelicas
                 cursorScript.DeactivateCursor();
                 playerCam.SetActive(true);
                 playerScript.canMove = true;
+                playerScript.canDisplay = true;
             }
             else
             {
@@ -157,7 +161,7 @@ namespace Pelicas
 
             playerCam.SetActive(true);
             npcCam.SetActive(false);
-            playerScript.canDisplay = true;
+            
 
         }
 
@@ -219,6 +223,7 @@ namespace Pelicas
                 
                 cursorScript.ActivateCursor();
                 playerScript.canMove = false;
+                playerScript.canDisplay = false;
             }
             else
             {
@@ -229,7 +234,7 @@ namespace Pelicas
             playerCam.SetActive(false);
             npcCam.SetActive(true);
 
-            playerScript.canDisplay = false;
+            
 
             npcPreview.SetActive(false);
             npcIsTalking.SetActive(true);
