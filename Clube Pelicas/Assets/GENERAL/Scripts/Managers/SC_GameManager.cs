@@ -16,12 +16,14 @@ namespace Pelicas
         [SerializeField] int reputToWin;
 
         SC_PlayerController player;
+        SC_CursorController cursor;
 
         #region - UNITY_FUNCTIONS -
 
         private void Awake()
         {
             player = FindObjectOfType<SC_PlayerController>();
+            cursor = FindObjectOfType<SC_CursorController>();
         }
 
         private void Start()
@@ -52,11 +54,13 @@ namespace Pelicas
             CloseMenu();
             player.canDisplay = true;
             player.canMove = true;
+            cursor.DeactivateCursor();
         }
 
         public void RestartGame(string scene)
         {
             PlayerPrefs.DeleteAll();
+            cursor.DeactivateCursor();
             player.canDisplay = true;
             player.canMove = true;
             SceneManager.LoadScene(scene);
@@ -64,6 +68,7 @@ namespace Pelicas
 
         public void QuitGame()
         {
+
             Application.Quit();
         }
 
@@ -75,6 +80,7 @@ namespace Pelicas
         {
             player.canDisplay = false;
             player.canMove = false;
+            cursor.ActivateCursor();
         }
 
         void CloseMenu()
