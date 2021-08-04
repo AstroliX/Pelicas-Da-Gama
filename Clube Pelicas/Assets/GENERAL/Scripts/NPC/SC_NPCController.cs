@@ -32,12 +32,15 @@ namespace Pelicas
         [SerializeField] GameObject palace;
         bool isTraveling;
 
+        [SerializeField] bool isGoodbye;
+
         [Space]
         [SerializeField] bool isOnSea;
         
 
         Transform T_player;
 
+        [SerializeField] GameObject npcGo;
 
         SC_PlayerController playerScript;
         SC_SeaPlayerController seaPlayerScript;
@@ -65,7 +68,11 @@ namespace Pelicas
 
         private void Update()
         {
-            
+            if (isGoodbye)
+            {
+                npcGo.GetComponent<SC_NPCAnim>().canIdle = false;
+                npcGo.GetComponent<SC_NPCAnim>().PlayNPCAnimBye();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -113,6 +120,15 @@ namespace Pelicas
             playerScript.enabled = true;
         }
 
+        IEnumerator Goodbye()
+        {
+            isGoodbye = true;
+            yield return new WaitForSeconds(1.2f);
+            isGoodbye = false;
+            
+            npcGo.GetComponent<SC_NPCAnim>().canIdle = true;
+        }
+
         #endregion
 
 
@@ -121,6 +137,7 @@ namespace Pelicas
         public void LeaveSetup()
         {
             isTalking = false;
+            StartCoroutine(Goodbye());
             npcAnim.PlayNPCAnimBye();
             
 
