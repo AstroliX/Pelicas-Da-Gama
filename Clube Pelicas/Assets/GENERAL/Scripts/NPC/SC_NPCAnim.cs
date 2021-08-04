@@ -10,6 +10,7 @@ namespace Pelicas
         [SerializeField] bool isKing;
 
         public bool canIdle;
+        public bool canTalk;
 
         SC_NPCController npc;
         Animation anim;
@@ -24,6 +25,7 @@ namespace Pelicas
         private void Start()
         {
             canIdle = true;
+            canTalk = true;
         }
 
         private void Update()
@@ -32,11 +34,11 @@ namespace Pelicas
 
             if (npcGo.GetComponent<SC_NPCController>().isTalking)
             {
-                if (!isKing)
+                if (!isKing & canTalk)
                 {
                     anim.Play("ANIM_Talk");
                 }
-                else
+                else if(canTalk)
                 {
                     anim.Play("ANIM_KingTalk");
                 }
