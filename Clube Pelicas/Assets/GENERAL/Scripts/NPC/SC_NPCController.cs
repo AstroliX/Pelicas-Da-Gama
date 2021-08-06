@@ -142,10 +142,12 @@ namespace Pelicas
             isTalking = false;
             StartCoroutine(Goodbye());
             npcAnim.PlayNPCAnimBye();
-            playerScript.isTalking = false;
+            
+            seaPlayerScript.isSeaTalking = false;
 
             if (!isOnSea)
             {
+                playerScript.isTalking = false;
                 cursorScript.DeactivateCursor();
                 playerCam.SetActive(true);
                 playerScript.canMove = true;
@@ -217,11 +219,11 @@ namespace Pelicas
         void NPCisTalking()
         {
             isTalking = true;
-            playerScript.isTalking = true;
+            seaPlayerScript.isSeaTalking = true;
 
             if (!isOnSea)
             {
-                
+                playerScript.isTalking = true;
                 cursorScript.ActivateCursor();
                 playerScript.canMove = false;
                 playerScript.canDisplay = false;

@@ -14,6 +14,7 @@ namespace Pelicas
         [SerializeField] float speed;
         private float inputHorizontal;
         public bool canMove;
+        public bool isSeaTalking;
         Rigidbody rb;
         Animation anim;
         bool firstTimeOnSea;
@@ -39,6 +40,12 @@ namespace Pelicas
 
         void Update()
         {
+
+            if (isSeaTalking)
+            {
+                anim.Play("ANIM_Talk");
+            }
+
             anim.Play("ANIM_Idle");
             if (canMove)
             {
