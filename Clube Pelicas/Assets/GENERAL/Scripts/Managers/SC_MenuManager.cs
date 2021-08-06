@@ -19,6 +19,8 @@ namespace Pelicas
         [SerializeField] GameObject helpMenu;
         [SerializeField] GameObject pauseMenu;
 
+        
+
         SC_CursorController cursor;
         SC_PlayerController player;
 
@@ -74,6 +76,7 @@ namespace Pelicas
 
         public void ResumeGame()
         {
+
             cursor.DeactivateCursor();
             pauseMenu.SetActive(false);
             //Time.timeScale = 1;
@@ -94,6 +97,7 @@ namespace Pelicas
 
         void PauseGame()
         {
+
             player.canMove = false;
             player.canDisplay = false;
             pauseMenu.SetActive(true);

@@ -12,6 +12,7 @@ namespace Pelicas
         Rigidbody rb;
         Animation anim;
         bool firstTimeOnSea;
+        bool isMoving;
 
         SC_KingSystem king;
 
@@ -39,23 +40,30 @@ namespace Pelicas
                 inputHorizontal = Input.GetAxisRaw("Horizontal");
                 rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
 
-                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
 
                     transform.rotation = Quaternion.Euler(0, 90, 0);
-                    anim.Play("ANIM_Run");
+                    isMoving = true;
                  
                 }
 
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
 
                     transform.rotation = Quaternion.Euler(0, -90, 0);
-                    anim.Play("ANIM_Run");
+                    isMoving = true;
 
                 }
+
+                
             }
 
+
+            if (isMoving)
+            {
+                PlayRunAnim();
+            }
             
 
             
@@ -71,7 +79,11 @@ namespace Pelicas
 
         #region - PRIVATE_FUNCTIONS -
 
-
+        void PlayRunAnim()
+        {
+            anim.Stop("ANIM_Idle");
+            anim.Play("ANIM_Run");
+        }
 
         #endregion
     }
