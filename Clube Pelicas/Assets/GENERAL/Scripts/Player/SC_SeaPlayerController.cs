@@ -6,6 +6,11 @@ namespace Pelicas
 {
     public class SC_SeaPlayerController : MonoBehaviour
     {
+
+
+     
+
+        [Space]
         [SerializeField] float speed;
         private float inputHorizontal;
         public bool canMove;
@@ -37,34 +42,27 @@ namespace Pelicas
             anim.Play("ANIM_Idle");
             if (canMove)
             {
-                inputHorizontal = Input.GetAxisRaw("Horizontal");
-                rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+               
 
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
 
                     transform.rotation = Quaternion.Euler(0, 90, 0);
-                    isMoving = true;
-                 
+                    Move();
+
                 }
 
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 {
 
                     transform.rotation = Quaternion.Euler(0, -90, 0);
-                    isMoving = true;
+                    Move();
 
                 }
 
                 
             }
 
-
-            if (isMoving)
-            {
-                PlayRunAnim();
-            }
-            
 
             
         }
@@ -79,9 +77,11 @@ namespace Pelicas
 
         #region - PRIVATE_FUNCTIONS -
 
-        void PlayRunAnim()
+        void Move()
         {
             anim.Stop("ANIM_Idle");
+            inputHorizontal = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
             anim.Play("ANIM_Run");
         }
 

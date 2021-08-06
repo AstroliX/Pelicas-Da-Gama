@@ -142,7 +142,7 @@ namespace Pelicas
             isTalking = false;
             StartCoroutine(Goodbye());
             npcAnim.PlayNPCAnimBye();
-            
+            playerScript.isTalking = false;
 
             if (!isOnSea)
             {
@@ -217,7 +217,8 @@ namespace Pelicas
         void NPCisTalking()
         {
             isTalking = true;
-            
+            playerScript.isTalking = true;
+
             if (!isOnSea)
             {
                 

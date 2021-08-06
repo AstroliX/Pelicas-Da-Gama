@@ -10,6 +10,14 @@ namespace Pelicas
     public class SC_SeaAdvisorManager : MonoBehaviour
     {
 
+
+        [Header("Floats")]
+        [SerializeField] private float movementSpeed;
+        [SerializeField] private float damping = 5f;
+        private float velocityY;
+        private readonly float gravity = Physics.gravity.y;
+
+
         [Header("Main menu")]
         [SerializeField] GameObject main_main;
         [SerializeField] GameObject areYouSure;
@@ -203,6 +211,9 @@ namespace Pelicas
         #endregion
 
         #region - PRIVATE_FUNCTIONS -
+
+        
+
         #endregion
 
     }

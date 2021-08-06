@@ -18,6 +18,7 @@ namespace Pelicas
         [Header("Bools")]
         public bool canMove;
         public bool canDisplay;
+        public bool isTalking;
 
         [Space]
         [Header("Escape Menu")]
@@ -72,14 +73,15 @@ namespace Pelicas
                 Move();
                 
             }
-            else
+            else if(!isTalking)
             {
                 anim.Play("ANIM_Idle");
             }
 
 
-            if (npc.isTalking)
+            if (isTalking)
             {
+                anim.Stop("ANIM_Idle");
                 anim.Play("ANIM_Talk");
             }
 
