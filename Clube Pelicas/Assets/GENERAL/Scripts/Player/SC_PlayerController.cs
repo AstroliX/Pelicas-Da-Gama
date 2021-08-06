@@ -20,7 +20,9 @@ namespace Pelicas
         public bool canDisplay;
 
         [Space]
+        [Header("Escape Menu")]
         [SerializeField] GameObject resourceDisplay;
+        [SerializeField] GameObject escapeMenuLogo;
         bool isDisplaying;
         
 
@@ -141,11 +143,13 @@ namespace Pelicas
             {
                 if (!isDisplaying)
                 {
+                    escapeMenuLogo.SetActive(false);
                     resourceDisplay.SetActive(true);
                     isDisplaying = true;
                 }
                 else if (isDisplaying)
                 {
+                    escapeMenuLogo.SetActive(true);
                     resourceDisplay.SetActive(false);
                     isDisplaying = false;
                 }

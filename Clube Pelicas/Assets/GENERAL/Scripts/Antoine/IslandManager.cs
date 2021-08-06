@@ -45,7 +45,7 @@ public class IslandManager : MonoBehaviour
        // }
        
 
-        Debug.Log(timer);
+        //Debug.Log(timer);
 
         Invoke("Spawner", timer);
 
