@@ -13,6 +13,7 @@ namespace Pelicas
         public bool enableSFX;
         public bool isMainMenu;
         bool isPauseMenu;
+        [SerializeField] bool isSea;
 
         [Space]
         [Header("Menus")]
@@ -23,12 +24,14 @@ namespace Pelicas
 
         SC_CursorController cursor;
         SC_PlayerController player;
+        SC_SeaPlayerController seaPlayer;
 
         #region - UNITY_FUNCTIONS -
         private void Awake()
         {
             cursor = FindObjectOfType<SC_CursorController>();
             player = FindObjectOfType<SC_PlayerController>();
+            seaPlayer = FindObjectOfType<SC_SeaPlayerController>();
         }
 
         private void Start()
@@ -41,9 +44,17 @@ namespace Pelicas
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 
-                if (!isMainMenu && !isPauseMenu)
+                if (!isMainMenu && !isPauseMenu && !isSea)
                 {
                     if (player.canDisplay)
+                    {
+                        PauseGame();
+                    }
+                    
+                }
+                else if(!isMainMenu && !isPauseMenu && isSea)
+                {
+                    if (seaPlayer.seaCanDisplay)
                     {
                         PauseGame();
                     }
@@ -77,12 +88,23 @@ namespace Pelicas
         public void ResumeGame()
         {
 
-            cursor.DeactivateCursor();
+            
             pauseMenu.SetActive(false);
             //Time.timeScale = 1;
             isPauseMenu = false;
-            player.canMove = true;
-            player.canDisplay = true;
+           
+            if (!isSea)
+            {
+                cursor.DeactivateCursor();
+                player.canMove = true;
+                player.canDisplay = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                seaPlayer.canMove = true;
+                seaPlayer.seaCanDisplay = true;
+            }
         }
 
         public void QuitGame()
@@ -97,13 +119,22 @@ namespace Pelicas
 
         void PauseGame()
         {
-
-            player.canMove = false;
-            player.canDisplay = false;
+            if (!isSea)
+            {
+                player.canMove = false;
+                player.canDisplay = false;
+                cursor.ActivateCursor();
+            }
+            else
+            {
+                seaPlayer.canMove = false;
+                seaPlayer.seaCanDisplay = false;
+                Time.timeScale = 0;
+            }
+            
             pauseMenu.SetActive(true);
-            //Time.timeScale = 0;
             isPauseMenu = true;
-            cursor.ActivateCursor();
+            
             Debug.Log("Pause");
         }
 

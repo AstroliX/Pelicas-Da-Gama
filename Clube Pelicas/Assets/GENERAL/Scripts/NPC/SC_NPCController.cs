@@ -101,7 +101,18 @@ namespace Pelicas
             {
                 if (Input.GetKeyDown(KeyCode.T))
                 {
-                    NPCisTalking();
+                    if (!isOnSea)
+                    {
+                        if (!playerScript.isDisplaying)
+                        {
+                            NPCisTalking();
+                        }
+                    }
+                    else
+                    {
+                        NPCisTalking();
+                    }
+                    
                 }
             }
         }
@@ -142,8 +153,8 @@ namespace Pelicas
             isTalking = false;
             StartCoroutine(Goodbye());
             npcAnim.PlayNPCAnimBye();
+
             
-            seaPlayerScript.isSeaTalking = false;
 
             if (!isOnSea)
             {
@@ -155,7 +166,9 @@ namespace Pelicas
             }
             else
             {
+                seaPlayerScript.isSeaTalking = false;
                 seaPlayerScript.canMove = true;
+                seaPlayerScript.isSeaTalking = false;
             }
             
             npcIsTalking.SetActive(false);
@@ -219,7 +232,7 @@ namespace Pelicas
         void NPCisTalking()
         {
             isTalking = true;
-            seaPlayerScript.isSeaTalking = true;
+            
 
             if (!isOnSea)
             {
@@ -230,14 +243,16 @@ namespace Pelicas
             }
             else
             {
+                seaPlayerScript.isSeaTalking = true;
                 seaPlayerScript.canMove = false;
+                seaPlayerScript.isSeaTalking = true;
             }
 
 
             playerCam.SetActive(false);
             npcCam.SetActive(true);
-
             
+
 
             npcPreview.SetActive(false);
             npcIsTalking.SetActive(true);
