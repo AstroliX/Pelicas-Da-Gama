@@ -21,6 +21,8 @@ public class SC_IntroAnimTransition : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Next = true;
+            Debug.Log("Click!!");
+
         }
 
         if (Time.time < 10)
@@ -30,8 +32,8 @@ public class SC_IntroAnimTransition : MonoBehaviour
 
         if (Next == true)
         {
-            MyAnimator.SetBool("Input", true);
-            Debug.Log("Click!!");
+            MyAnimator.SetBool("Next", true);
+            
         }
     }
 }
