@@ -19,6 +19,8 @@ namespace Pelicas
         Animation anim;
         bool firstTimeOnSea;
         bool isMoving;
+        public bool seaCanDisplay;
+        public bool seaIsTalking;
 
         SC_KingSystem king;
 
@@ -34,12 +36,14 @@ namespace Pelicas
         private void Start()
         {
             canMove = true;
+            seaCanDisplay = true;
             king.PlayerInSea();
             
         }
 
         void Update()
         {
+
 
             if (isSeaTalking)
             {
@@ -91,6 +95,8 @@ namespace Pelicas
             rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
             anim.Play("ANIM_Run");
         }
+
+
 
         #endregion
     }

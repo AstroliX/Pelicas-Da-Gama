@@ -19,12 +19,14 @@ namespace Pelicas
         public bool canMove;
         public bool canDisplay;
         public bool isTalking;
+        public bool isDisplaying;
+        
 
         [Space]
         [Header("Escape Menu")]
         [SerializeField] GameObject resourceDisplay;
         [SerializeField] GameObject escapeMenuLogo;
-        bool isDisplaying;
+        
         
 
         private Vector3 currentImpact;
@@ -61,7 +63,7 @@ namespace Pelicas
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (canDisplay)
+                if (canDisplay && !isTalking)
                 {
                     ShowResourceDisplay();
                 }
