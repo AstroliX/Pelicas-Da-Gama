@@ -60,7 +60,13 @@ namespace Pelicas
         [SerializeField] int limitCrew;
         [SerializeField] int limitGold;
 
+        [Space]
+        [Header("Other")]
+        [SerializeField] GameObject animIntro;
+        [SerializeField] bool isMainMenu;
+
          int notFirstInstance;
+        
 
         #region - UNITY_FUNCTIONS- 
 
@@ -88,11 +94,7 @@ namespace Pelicas
 
             notFirstInstance = PlayerPrefs.GetInt("notFirstInstance");
 
-            if (notFirstInstance == 0)
-            {
-                Debug.Log("Not First Instance is false");
 
-            }
 
                   
         }
@@ -107,7 +109,11 @@ namespace Pelicas
                 PlayerPrefs.SetInt("notFirstInstance", 1);
                 notFirstInstance += 1;
                 Debug.Log("First Instance");
-
+                if (isMainMenu)
+                {
+                    animIntro.SetActive(true);
+                }
+                
             }
             else
             {

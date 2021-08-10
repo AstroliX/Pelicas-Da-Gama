@@ -21,7 +21,7 @@ public class SC_IntroAnimTransition : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Next = true;
-            Debug.Log("Click!!");
+            //Debug.Log("Click!!");
 
         }
 

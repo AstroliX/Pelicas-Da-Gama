@@ -57,9 +57,32 @@ namespace Pelicas
         [SerializeField] int ironNeeded_2;
         [SerializeField] int ironNeeded_3;
 
+
+        [Space]
+        [Header("Checkbox Hull")]
+        [SerializeField] GameObject checkboxHull_1;
+        [SerializeField] GameObject checkboxHull_2;
+        [SerializeField] GameObject checkboxHull_3;
+
+        [Space]
+        [Header("Checkbox Hull")]
+        [SerializeField] GameObject checkboxStock_1;
+        [SerializeField] GameObject checkboxStock_2;
+        [SerializeField] GameObject checkboxStock_3;
+
+        [Space]
+        [Header("Checkbox Hull")]
+        [SerializeField] GameObject checkboxQuarters_1;
+        [SerializeField] GameObject checkboxQuarters_2;
+        [SerializeField] GameObject checkboxQuarters_3;
+
+
+        [SerializeField] Sprite fullbox;
+
         [Space]
         [SerializeField] GameObject npcAnim;
         bool isHappy;
+        bool isSad;
 
         SC_UpgradeSystem upgrade;
         SC_ResourcesManager resource;
@@ -84,21 +107,38 @@ namespace Pelicas
 
             iron = resource.iron;
             ironAmount.text = iron + "";
+
+            if (isSad)
+            {
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
+            }
+
+            if (isHappy)
+            {
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
+            }
+
         }
 
         IEnumerator YouDontHaveEnough()
         {
             uDontHaveEnough.SetActive(true);
-            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
-            yield return new WaitForSeconds(3);
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isSad = true;
+            yield return new WaitForSeconds(2);
+            isSad = false;
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
             uDontHaveEnough.SetActive(false);
         }
 
         IEnumerator YouAlreadyMaxedOut()
         {
             uMaxeOutThisUpgrade.SetActive(true);
-            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
-            yield return new WaitForSeconds(3);
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isSad = true;
+            yield return new WaitForSeconds(2);
+            isSad = false;
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
             uMaxeOutThisUpgrade.SetActive(false);
         }
 
@@ -278,6 +318,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_1;
                     resource.iron -= ironNeeded_1;
+                    checkboxHull_1.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -301,6 +342,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_2;
                     resource.iron -= ironNeeded_2;
+                    checkboxHull_2.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -323,6 +365,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
+                    checkboxHull_3.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -360,6 +403,8 @@ namespace Pelicas
                     resource.wood -= woodNeeded_1;
                     resource.iron -= ironNeeded_1;
 
+                    checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
 
@@ -378,6 +423,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_2;
                     resource.iron -= ironNeeded_2;
+                    checkboxStock_2.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -400,6 +446,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
+                    checkboxStock_3.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -431,6 +478,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_1;
                     resource.iron -= ironNeeded_1;
+                    checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -454,6 +502,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_2;
                     resource.iron -= ironNeeded_2;
+                    checkboxQuarters_2.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);
@@ -476,6 +525,7 @@ namespace Pelicas
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
+                    checkboxQuarters_3.GetComponent<Image>().sprite = fullbox;
 
                     PlayerPrefs.SetInt("wood", resource.wood);
                     PlayerPrefs.SetInt("iron", resource.iron);

@@ -108,6 +108,7 @@ namespace Pelicas
         #endregion
 
         bool isHappy;
+        bool isSad;
         [SerializeField] GameObject npcGo;
 
         SC_ResourcesManager resource;
@@ -126,6 +127,11 @@ namespace Pelicas
             if (isHappy)
             {
                 npcGo.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
+            }
+
+            if (isSad)
+            {
+                npcGo.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
             }
 
             if (isAtResources)
@@ -180,16 +186,22 @@ namespace Pelicas
         IEnumerator YouDontHaveThisItem()
         {
             fb_YouDontHaveThisItem.SetActive(true);
-            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
-            yield return new WaitForSecondsRealtime(2);
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isSad = true;
+            yield return new WaitForSeconds(2);
+            isSad = false;
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
             fb_YouDontHaveThisItem.SetActive(false);
         }
 
         IEnumerator YouDontHaveEnoughGold()
         {
             fb_YouDontHaveEnoughGold.SetActive(true);
-            npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
-            yield return new WaitForSecondsRealtime(2);
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isSad = true;
+            yield return new WaitForSeconds(2);
+            isSad = false;
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
             fb_YouDontHaveEnoughGold.SetActive(false);
         }
 

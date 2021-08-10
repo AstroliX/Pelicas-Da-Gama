@@ -40,10 +40,16 @@ namespace Pelicas
         [Header("Updated TXT")]
         [SerializeField] TextMeshProUGUI goldTXT;
         [SerializeField] TextMeshProUGUI crewTXT;
+
+
+        [Space]
+        [SerializeField] GameObject npcAnim;
+
         float crew;
         int gold;
 
-        
+        bool isHappy;
+        bool isSad;
         bool isCrewMenu;
 
         SC_ResourcesManager resource;
@@ -66,7 +72,22 @@ namespace Pelicas
                 goldTXT.text = gold + "";
                 crewTXT.text = crew + "/100";
             }
+
+            if (isHappy)
+            {
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
+            }
             
+        }
+
+        IEnumerator Happy()
+        {
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isHappy = true;
+            yield return new WaitForSeconds(1.4f);
+            isHappy = false;
+
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
         }
 
         #endregion
@@ -130,6 +151,7 @@ namespace Pelicas
                 resource.gold -= 15;
                 resource.crew += 10;
 
+                StartCoroutine(Happy());
 
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
@@ -143,6 +165,7 @@ namespace Pelicas
                 resource.gold -= 30;
                 resource.crew += 20;
 
+                StartCoroutine(Happy());
 
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
@@ -156,6 +179,7 @@ namespace Pelicas
                 resource.gold -= 50;
                 resource.crew += 30;
 
+                StartCoroutine(Happy());
 
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
