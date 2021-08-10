@@ -26,6 +26,7 @@ namespace Pelicas
         [SerializeField] GameObject moneyUHave;
         [SerializeField] GameObject crew_buttons;
         [SerializeField] GameObject statesGroup;
+        [SerializeField] GameObject fb_YouDontHaveEnoughGold;
 
 
         [Space]
@@ -34,6 +35,12 @@ namespace Pelicas
         [SerializeField] GameObject state_2;
         [SerializeField] GameObject state_3;
         [SerializeField] GameObject state_4;
+        [SerializeField] GameObject state_logo;
+        [SerializeField] Sprite s_state_1;
+        [SerializeField] Sprite s_state_2;
+        [SerializeField] Sprite s_state_3;
+        [SerializeField] Sprite s_state_4;
+
 
 
         [Space]
@@ -78,6 +85,17 @@ namespace Pelicas
                 npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
             
+        }
+
+        IEnumerator YouDontHaveEnoughGold()
+        {
+            fb_YouDontHaveEnoughGold.SetActive(true);
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = false;
+            isSad = true;
+            yield return new WaitForSeconds(2);
+            isSad = false;
+            npcAnim.GetComponent<SC_NPCAnim>().canTalk = true;
+            fb_YouDontHaveEnoughGold.SetActive(false);
         }
 
         IEnumerator Happy()
@@ -156,6 +174,10 @@ namespace Pelicas
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
             }
+            else if(resource.gold < 15)
+            {
+                StartCoroutine(YouDontHaveEnoughGold());
+            }
         }
 
         public void Pay30()
@@ -169,6 +191,10 @@ namespace Pelicas
 
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
+            }
+            else if (resource.gold < 30)
+            {
+                StartCoroutine(YouDontHaveEnoughGold());
             }
         }
 
@@ -184,7 +210,11 @@ namespace Pelicas
                 PlayerPrefs.SetInt("gold", resource.gold);
                 PlayerPrefs.SetFloat("crew", resource.crew);
             }
-            
+            else if (resource.gold < 50)
+            {
+                StartCoroutine(YouDontHaveEnoughGold());
+            }
+
         }
 
         #endregion
@@ -203,22 +233,26 @@ namespace Pelicas
         {
             if (resource.crew < 25)
             {
-                state_1.SetActive(true);
+                state_logo.GetComponent<Image>().sprite = s_state_4;
+                state_4.SetActive(true);
             }
 
             if (resource.crew > 25 && resource.crew < 50)
             {
-                state_2.SetActive(true);
+                state_logo.GetComponent<Image>().sprite = s_state_3;
+                state_3.SetActive(true);
             }
 
             if (resource.crew > 50 && resource.crew < 75)
             {
-                state_3.SetActive(true);
+                state_logo.GetComponent<Image>().sprite = s_state_2;
+                state_2.SetActive(true);
             }
 
             if (resource.crew > 75)
             {
-                state_4.SetActive(true);
+                state_logo.GetComponent<Image>().sprite = s_state_1;
+                state_1.SetActive(true);
             }
         }
 
