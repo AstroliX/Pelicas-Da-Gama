@@ -22,9 +22,12 @@ namespace Pelicas
 
         
 
+        
+
         SC_CursorController cursor;
         SC_PlayerController player;
         SC_SeaPlayerController seaPlayer;
+
 
         #region - UNITY_FUNCTIONS -
         private void Awake()
@@ -34,13 +37,11 @@ namespace Pelicas
             seaPlayer = FindObjectOfType<SC_SeaPlayerController>();
         }
 
-        private void Start()
-        {
-            
-        }
+
 
         private void Update()
         {
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 
