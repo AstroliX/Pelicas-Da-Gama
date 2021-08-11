@@ -67,10 +67,10 @@ namespace Pelicas
             pearl = resource.pearl;
             pearl_TXT.text = "x" + pearl;
 
-            banana = resource.exoFruit_2;
+            banana = resource.exoFruit_1;
             banana_TXT.text = "x" + banana;
 
-            pineapple = resource.exoFruit_1;
+            pineapple = resource.exoFruit_2;
             pineapple_TXT.text = "x" + pineapple;
 
             erable = resource.exoLeaf_1;
@@ -110,7 +110,7 @@ namespace Pelicas
             gold_TXT.text = "x" + gold;
 
             reput = resource.reputPoint;
-            reput_TXT.text = "x" + gold;
+            reput_TXT.text = "x" + reput;
         }
         #endregion
 

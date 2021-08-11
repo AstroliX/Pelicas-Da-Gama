@@ -42,7 +42,7 @@ public class SC_CursorSprite : MonoBehaviour
 
         }
 
-        Debug.Log(CursorPosition);
+        //Debug.Log(CursorPosition);
 
     }
 }
