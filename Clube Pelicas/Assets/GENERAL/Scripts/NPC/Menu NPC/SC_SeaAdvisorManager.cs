@@ -146,8 +146,25 @@ namespace Pelicas
 
         public void YesGoToSea(string levelName)
         {
+            if(PlayerPrefs.GetInt("quarters") == 0)
+            {
+                resources.crew -= 20;
+            }
 
-            resources.crew -= 20;
+            if (PlayerPrefs.GetInt("quarters") == 1)
+            {
+                resources.crew -= 15;
+            }
+
+            if (PlayerPrefs.GetInt("quarters") == 2)
+            {
+                resources.crew -= 10;
+            }
+
+            if (PlayerPrefs.GetInt("quarters") == 3)
+            {
+                resources.crew -= 5;
+            }
             PlayerPrefs.SetFloat("crew", resources.crew);
 
             SceneManager.LoadScene(levelName);

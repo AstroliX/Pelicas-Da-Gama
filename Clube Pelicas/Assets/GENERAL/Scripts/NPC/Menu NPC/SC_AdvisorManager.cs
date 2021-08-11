@@ -43,6 +43,7 @@ namespace Pelicas
 
 
 
+
         [Space]
         [Header("Updated TXT")]
         [SerializeField] TextMeshProUGUI goldTXT;
@@ -78,6 +79,8 @@ namespace Pelicas
 
                 goldTXT.text = gold + "";
                 crewTXT.text = crew + "/100";
+
+                SetStateCrew();
             }
 
             if (isHappy)
@@ -152,6 +155,7 @@ namespace Pelicas
             DeactivateAllStates();
             payCrewMenu.SetActive(true);
             moneyUHave.SetActive(true);
+            statesGroup.SetActive(false);
         }
 
         public void LeavePayMenu()
@@ -160,6 +164,7 @@ namespace Pelicas
             SetStateCrew();
             payCrewMenu.SetActive(false);
             moneyUHave.SetActive(false);
+            statesGroup.SetActive(true);
         }
 
         public void Pay15()

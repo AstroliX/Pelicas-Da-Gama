@@ -161,6 +161,8 @@ namespace Pelicas
         {
             mainMenu.SetActive(false);
             whichUpgradeMenu.SetActive(true);
+
+            SetSpriteCheckbox();
         }
 
         public void GoingBackToMainMenu()
@@ -361,7 +363,7 @@ namespace Pelicas
                 if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
                 {
                     upgrade.hull += 1;
-                    PlayerPrefs.SetInt("hull", 2);
+                    PlayerPrefs.SetInt("hull", 3);
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
@@ -378,7 +380,7 @@ namespace Pelicas
                 }
             }
 
-            if(PlayerPrefs.GetInt("hull") > 2)
+            if(PlayerPrefs.GetInt("hull") > 3)
             {
                 StartCoroutine(YouAlreadyMaxedOut());
             }
@@ -442,7 +444,7 @@ namespace Pelicas
                 if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
                 {
                     upgrade.stock += 1;
-                    PlayerPrefs.SetInt("stock", 2);
+                    PlayerPrefs.SetInt("stock", 3);
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
@@ -459,7 +461,7 @@ namespace Pelicas
                 }
             }
 
-            if (PlayerPrefs.GetInt("stock") > 2)
+            if (PlayerPrefs.GetInt("stock") > 3)
             {
                 StartCoroutine(YouAlreadyMaxedOut());
             }
@@ -521,7 +523,7 @@ namespace Pelicas
                 if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
                 {
                     upgrade.quarters += 1;
-                    PlayerPrefs.SetInt("quarters", 2);
+                    PlayerPrefs.SetInt("quarters", 3);
 
                     resource.wood -= woodNeeded_3;
                     resource.iron -= ironNeeded_3;
@@ -538,7 +540,7 @@ namespace Pelicas
                 }
             }
 
-            if (PlayerPrefs.GetInt("quarters") > 2)
+            if (PlayerPrefs.GetInt("quarters") > 3)
             {
                 StartCoroutine(YouAlreadyMaxedOut());
             }
@@ -548,6 +550,68 @@ namespace Pelicas
 
 
         #region - PRIVATE_FUNCTIONS -
+
+        void SetSpriteCheckbox()
+        {
+            if(PlayerPrefs.GetInt("hull") == 1)
+            {
+                checkboxHull_1.GetComponent<Image>().sprite = fullbox;
+            }
+
+            if(PlayerPrefs.GetInt("hull") == 2)
+            {
+                checkboxHull_1.GetComponent<Image>().sprite = fullbox;
+                checkboxHull_2.GetComponent<Image>().sprite = fullbox;
+            }
+
+            if (PlayerPrefs.GetInt("hull") == 3)
+            {
+                checkboxHull_1.GetComponent<Image>().sprite = fullbox;
+                checkboxHull_2.GetComponent<Image>().sprite = fullbox;
+                checkboxHull_3.GetComponent<Image>().sprite = fullbox;
+            }
+
+
+            if (PlayerPrefs.GetInt("stock") == 1)
+            {
+                checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+            }
+
+            if (PlayerPrefs.GetInt("stock") == 2)
+            {
+                checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+                checkboxStock_2.GetComponent<Image>().sprite = fullbox;
+            }
+
+
+            if (PlayerPrefs.GetInt("stock") == 3)
+            {
+                checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+                checkboxStock_2.GetComponent<Image>().sprite = fullbox;
+                checkboxStock_3.GetComponent<Image>().sprite = fullbox;
+            }
+
+
+            if (PlayerPrefs.GetInt("quarters") == 1)
+            {
+                checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
+            }
+
+            if (PlayerPrefs.GetInt("quarters") == 2)
+            {
+                checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
+                checkboxQuarters_2.GetComponent<Image>().sprite = fullbox;
+            }
+
+
+            if (PlayerPrefs.GetInt("quarters") == 3)
+            {
+                checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
+                checkboxQuarters_2.GetComponent<Image>().sprite = fullbox;
+                checkboxQuarters_3.GetComponent<Image>().sprite = fullbox;
+            }
+        }
+
         #endregion
     }
 }

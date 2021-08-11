@@ -29,9 +29,7 @@ namespace Pelicas
         private void Start()
         {
 
-            if(PlayerPrefs.GetInt("notFirstInstance") == 1)
-            {
-                if (PlayerPrefs.GetFloat("crew") <= 0)
+                if (PlayerPrefs.GetFloat("crew") == 0)
                 {
                     EndGame();
                     defeatMenu.SetActive(true);
@@ -41,7 +39,7 @@ namespace Pelicas
                     EndGame();
                     winMenu.SetActive(true);
                 }
-            }
+            
             
         }
 
@@ -60,9 +58,11 @@ namespace Pelicas
         public void RestartGame(string scene)
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetFloat("crew", 100f);
             cursor.DeactivateCursor();
             player.canDisplay = true;
             player.canMove = true;
+            defeatMenu.SetActive(false);
             SceneManager.LoadScene(scene);
         }
 

@@ -55,13 +55,20 @@ namespace Pelicas
         #region Items Value
         [Space]
         [Header("Items Value")]
-        [SerializeField] int tomatoValue;
-        [SerializeField] int pepperValue;
-        [SerializeField] int nativeGiftValue;
-        [SerializeField] int vanillaPlantValue;
-        [SerializeField] int coconutValue;
-        [SerializeField] int woodValue;
-        [SerializeField] int ironValue;
+        [SerializeField] int tomatoValue_SELL;
+        [SerializeField] int pepperValue_SELL;
+        [SerializeField] int nativeGiftValue_SELL;
+        [SerializeField] int vanillaPlantValue_SELL;
+        [SerializeField] int coconutValue_SELL;
+        [SerializeField] int woodValue_SELL;
+        [SerializeField] int ironValue_SELL;
+        [SerializeField] int tomatoValue_BUY;
+        [SerializeField] int pepperValue_BUY;
+        [SerializeField] int nativeGiftValue_BUY;
+        [SerializeField] int vanillaPlantValue_BUY;
+        [SerializeField] int coconutValue_BUY;
+        [SerializeField] int woodValue_BUY;
+        [SerializeField] int ironValue_BUY;
 
         #endregion
 
@@ -408,7 +415,7 @@ namespace Pelicas
             {
                 resource.tomato -= 1;
 
-                resource.gold += tomatoValue;
+                resource.gold += tomatoValue_SELL;
 
                 PlayerPrefs.SetInt("tomato", resource.tomato);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -429,7 +436,7 @@ namespace Pelicas
             {
                 resource.pepper -= 1;
 
-                resource.gold += pepperValue;
+                resource.gold += pepperValue_SELL;
 
                 PlayerPrefs.SetInt("pepper", resource.pepper);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -450,7 +457,7 @@ namespace Pelicas
             {
                 resource.nativeGift -= 1;
 
-                resource.gold += nativeGiftValue;
+                resource.gold += nativeGiftValue_SELL;
 
                 PlayerPrefs.SetInt("nativeGift", resource.nativeGift);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -472,7 +479,7 @@ namespace Pelicas
             {
                 resource.vanillaPlant -= 1;
 
-                resource.gold += vanillaPlantValue;
+                resource.gold += vanillaPlantValue_SELL;
 
                 PlayerPrefs.SetInt("vanillaPlant", resource.vanillaPlant);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -493,7 +500,7 @@ namespace Pelicas
             {
                 resource.coconut -= 1;
 
-                resource.gold += coconutValue;
+                resource.gold += coconutValue_SELL;
 
                 PlayerPrefs.SetInt("coconut", resource.coconut);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -515,7 +522,7 @@ namespace Pelicas
             {
                 resource.wood -= 1;
 
-                resource.gold += woodValue;
+                resource.gold += woodValue_SELL;
 
                 PlayerPrefs.SetInt("wood", resource.wood);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -537,7 +544,7 @@ namespace Pelicas
             {
                 resource.iron -= 1;
 
-                resource.gold += woodValue;
+                resource.gold += woodValue_SELL;
 
                 PlayerPrefs.SetInt("iron", resource.iron);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -715,11 +722,11 @@ namespace Pelicas
 
         public void BuyTomato()
         {
-            if (resource.gold >= tomatoValue)
+            if (resource.gold >= tomatoValue_BUY)
             {
                 resource.tomato += 1;
 
-                resource.gold -= tomatoValue;
+                resource.gold -= tomatoValue_BUY;
 
                 PlayerPrefs.SetInt("tomato", resource.tomato);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -736,11 +743,11 @@ namespace Pelicas
 
         public void BuyPepper()
         {
-            if (resource.gold >= pepperValue)
+            if (resource.gold >= pepperValue_BUY)
             {
                 resource.pepper += 1;
 
-                resource.gold -= pepperValue;
+                resource.gold -= pepperValue_BUY;
 
                 PlayerPrefs.SetInt("pepper", resource.pepper);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -758,11 +765,11 @@ namespace Pelicas
 
         public void BuyVanillaPlant()
         {
-            if (resource.gold >= vanillaPlantValue)
+            if (resource.gold >= vanillaPlantValue_BUY)
             {
                 resource.vanillaPlant += 1;
 
-                resource.gold -= vanillaPlantValue;
+                resource.gold -= vanillaPlantValue_BUY;
 
                 PlayerPrefs.SetInt("vanillaPlant", resource.vanillaPlant);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -779,11 +786,11 @@ namespace Pelicas
 
         public void BuyCoconut()
         {
-            if (resource.gold >= coconutValue)
+            if (resource.gold >= coconutValue_BUY)
             {
                 resource.coconut += 1;
 
-                resource.gold -= coconutValue;
+                resource.gold -= coconutValue_BUY;
 
                 PlayerPrefs.SetInt("coconut", resource.coconut);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -801,11 +808,11 @@ namespace Pelicas
 
         public void BuyWood()
         {
-            if (resource.gold >= woodValue)
+            if (resource.gold >= woodValue_BUY)
             {
                 resource.wood += 1;
 
-                resource.gold -= woodValue;
+                resource.gold -= woodValue_BUY;
 
                 PlayerPrefs.SetInt("wood", resource.wood);
                 PlayerPrefs.SetInt("gold", resource.gold);
@@ -823,11 +830,11 @@ namespace Pelicas
 
         public void BuyIron()
         {
-            if (resource.gold >= ironValue)
+            if (resource.gold >= ironValue_BUY)
             {
                 resource.iron += 1;
 
-                resource.gold -= ironValue;
+                resource.gold -= ironValue_BUY;
 
                 PlayerPrefs.SetInt("iron", resource.iron);
                 PlayerPrefs.SetInt("gold", resource.gold);
