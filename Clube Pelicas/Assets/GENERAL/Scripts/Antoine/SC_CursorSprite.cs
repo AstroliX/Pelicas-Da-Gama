@@ -7,7 +7,7 @@ public class SC_CursorSprite : MonoBehaviour
 {
     private Vector2 CursorPosition;
 
-    private bool IsVisible;
+    private bool IsVisible = false;
 
     private RectTransform MyRT;
     private Image MyImage;
@@ -41,8 +41,6 @@ public class SC_CursorSprite : MonoBehaviour
             MyImage.color = new Color32(255, 255, 255, 0);
 
         }
-
-        Debug.Log(CursorPosition);
 
     }
 }
