@@ -2,38 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SC_IntroAnimTransition : MonoBehaviour
+
+namespace Pelicas
 {
-
-    Animator MyAnimator;
-
-    private bool Next = false;
-
-    void Start()
+    public class SC_IntroAnimTransition : MonoBehaviour
     {
+        [SerializeField] GameObject menu;
 
-        MyAnimator = gameObject.GetComponent<Animator>();
+        Animator MyAnimator;
 
-    }
+        private bool Next = false;
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        #region - UNITY_FUNCTIONS -
+
+        void Start()
         {
-            Next = true;
-            //Debug.Log("Click!!");
+
+            MyAnimator = gameObject.GetComponent<Animator>();
 
         }
 
-        if (Time.time < 10)
+        void Update()
         {
-            Next = false;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Next = true;
+                //Debug.Log("Click!!");
+
+            }
+
+            if (Time.time < 10)
+            {
+                Next = false;
+            }
+
+            if (Next == true)
+            {
+
+                MyAnimator.SetBool("Next", true);
+                menu.SetActive(true);
+            }
         }
 
-        if (Next == true)
-        {
-            MyAnimator.SetBool("Next", true);
-            
-        }
+        #endregion
+
+        #region - PUBLIC_FUNCTIONS -
+        #endregion
+
+        #region - PRIVATE_FUNCTIONS -
+        #endregion
+
+
     }
 }
+
