@@ -33,12 +33,12 @@ public class SC_CursorSprite : MonoBehaviour
 
         if(IsVisible == true)
         {
-          MyImage.color = new Color32(255, 161, 73, 255);
+          MyImage.color = new Color32(255, 255, 255, 255);
         }
 
         else
         {
-            MyImage.color = new Color32(255, 161, 73, 0);
+            MyImage.color = new Color32(255, 255, 255, 0);
 
         }
 
