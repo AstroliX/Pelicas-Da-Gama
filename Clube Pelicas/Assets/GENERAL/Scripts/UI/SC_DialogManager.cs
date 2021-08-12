@@ -17,6 +17,7 @@ namespace Pelicas
         SC_TutoPlayerController tutoPlayer;
         SC_CursorController cursor;
         SC_TutoNpcTrigger setup;
+        SC_TutoManager tuto;
 
         #region - UNITY_FUNCTIONS -
 
@@ -25,13 +26,14 @@ namespace Pelicas
             tutoPlayer = FindObjectOfType<SC_TutoPlayerController>();
             cursor = FindObjectOfType<SC_CursorController>();
             setup = FindObjectOfType<SC_TutoNpcTrigger>();
+            tuto = FindObjectOfType<SC_TutoManager>();
         }
 
         private void Start()
         {
             StartCoroutine(Type());
 
-            tutoPlayer.canMove = false;
+            //tutoPlayer.canMove = false;
 
 
         }
@@ -82,6 +84,8 @@ namespace Pelicas
                 cursor.DeactivateCursor();
                 Destroy(menu);
                 setup.LeaveTalk();
+
+                
 
             }
         }

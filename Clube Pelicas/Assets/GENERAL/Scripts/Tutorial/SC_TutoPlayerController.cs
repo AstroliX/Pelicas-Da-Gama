@@ -53,7 +53,7 @@ namespace Pelicas
         {
             canMove = false;
             canDisplay = false;
-            canTalk = false;
+            canTalk = true;
 
         }
 

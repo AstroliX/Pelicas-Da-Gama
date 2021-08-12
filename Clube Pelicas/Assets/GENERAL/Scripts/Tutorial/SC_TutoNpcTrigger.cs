@@ -8,12 +8,15 @@ namespace Pelicas
     {
         [Header("UI")]
         [SerializeField] GameObject npcPreview;
-        [SerializeField] GameObject firstMenu;
+        [SerializeField] GameObject dialog_1;
+        [SerializeField] GameObject dialog_2;
 
         [Space]
         [Header("Cameras")]
         [SerializeField] GameObject playerCam;
         [SerializeField] GameObject npcCam;
+        [SerializeField] GameObject npcCam_1;
+        [SerializeField] GameObject npcCam_2;
 
         [Space]
         [Header("Bools")]
@@ -33,9 +36,7 @@ namespace Pelicas
         bool isGoodbye;
         bool isHappy;
 
-        public bool menu_1;
-        public bool menu_2;
-        public bool menu_3;
+       
 
         [Space]
         [SerializeField] bool isOnSea;
@@ -49,6 +50,8 @@ namespace Pelicas
         SC_SeaPlayerController seaPlayerScript;
         SC_CursorController cursorScript;
         SC_TutoNpcAnim npcAnim;
+        SC_TutoManager tuto;
+        SC_TutoNpcController npcController;
 
 
         #region - UNITY_FUNCTIONS -
@@ -59,6 +62,8 @@ namespace Pelicas
             seaPlayerScript = FindObjectOfType<SC_SeaPlayerController>();
             cursorScript = FindObjectOfType<SC_CursorController>();
             npcAnim = FindObjectOfType<SC_TutoNpcAnim>();
+            tuto = FindObjectOfType<SC_TutoManager>();
+            npcController = FindObjectOfType<SC_TutoNpcController>();
 
             T_player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -67,7 +72,7 @@ namespace Pelicas
         private void Start()
         {
             canInteract = true;
-            menu_1 = true;
+            
         }
 
         private void Update()
@@ -106,7 +111,7 @@ namespace Pelicas
                 {
                     if (!isOnSea)
                     {
-                        if (!tutoPlayer.isDisplaying)
+                        if (!tutoPlayer.isDisplaying && tutoPlayer.canTalk)
                         {
                             NPCisTalking();
                         }
@@ -186,12 +191,16 @@ namespace Pelicas
         public void LeaveTalk()
         {
             playerCam.SetActive(true);
-            npcCam.SetActive(false);
             tutoPlayer.canMove = true;
             tutoPlayer.canDisplay = true;
             tutoPlayer.isTalking = false;
 
-
+            if (tuto.step_1)
+            {
+                npcCam_1.SetActive(false);
+                npcController.isMoving = true;
+            }
+            
 
         }
 
@@ -248,10 +257,11 @@ namespace Pelicas
         {
             //isTalking = true;
 
+            Debug.Log("Ola");
 
             if (!isOnSea)
             {
-                tutoPlayer.isTalking = true;
+                //tutoPlayer.isTalking = true;
                 
                 tutoPlayer.canMove = false;
                 tutoPlayer.canDisplay = false;
@@ -263,15 +273,25 @@ namespace Pelicas
                 seaPlayerScript.isSeaTalking = true;
             }
 
-
+            
             playerCam.SetActive(false);
-            npcCam.SetActive(true);
+            
 
 
 
             npcPreview.SetActive(false);
-            firstMenu.SetActive(true);
 
+             if (tuto.step_1)
+            {
+                dialog_1.SetActive(true);
+                npcCam_1.SetActive(true);
+            }
+
+            /*if (tuto.step_2)
+            {
+                dialog_2.SetActive(true);
+                npcCam_2.SetActive(true);
+            }*/
 
 
         }
