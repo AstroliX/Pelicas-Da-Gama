@@ -12,6 +12,7 @@ namespace Pelicas
         public bool enableMusic;
         public bool enableSFX;
         public bool isMainMenu;
+        public bool isTuto;
         bool isPauseMenu;
         [SerializeField] bool isSea;
 
@@ -27,6 +28,7 @@ namespace Pelicas
         SC_CursorController cursor;
         SC_PlayerController player;
         SC_SeaPlayerController seaPlayer;
+        SC_TutoPlayerController tutoPlayer;
 
 
         #region - UNITY_FUNCTIONS -
@@ -35,6 +37,7 @@ namespace Pelicas
             cursor = FindObjectOfType<SC_CursorController>();
             player = FindObjectOfType<SC_PlayerController>();
             seaPlayer = FindObjectOfType<SC_SeaPlayerController>();
+            tutoPlayer = FindObjectOfType<SC_TutoPlayerController>();
         }
 
 
@@ -47,7 +50,11 @@ namespace Pelicas
                 
                 if (!isMainMenu && !isPauseMenu && !isSea)
                 {
-                    if (player.canDisplay)
+                    if (player.canDisplay && !isTuto)
+                    {
+                        PauseGame();
+                    }
+                    else if (isTuto && tutoPlayer.canDisplay)
                     {
                         PauseGame();
                     }

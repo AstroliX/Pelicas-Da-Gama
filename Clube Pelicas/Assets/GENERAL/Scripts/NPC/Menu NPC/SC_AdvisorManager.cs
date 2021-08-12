@@ -87,6 +87,11 @@ namespace Pelicas
             {
                 npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
+
+            if (isSad)
+            {
+                npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimSad();
+            }
             
         }
 
