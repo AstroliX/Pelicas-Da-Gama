@@ -57,10 +57,7 @@ namespace Pelicas
 
         private void Update()
         {
-
             
-
-
             if (Input.GetKeyDown(KeyCode.R))
             {
                 if (canDisplay && !isTalking)

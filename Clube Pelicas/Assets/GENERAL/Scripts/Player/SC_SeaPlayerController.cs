@@ -33,7 +33,7 @@ namespace Pelicas
             anim = GetComponent<Animation>();
         }
 
-        private void Start()
+        public void Start()
         {
             canMove = true;
             seaCanDisplay = true;
@@ -49,37 +49,59 @@ namespace Pelicas
             {
                 anim.Play("ANIM_Talk");
             }
+          
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                anim.Play("ANIM_Run");
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+                inputHorizontal = Input.GetAxisRaw("Horizontal");
+                rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+            }
 
-            anim.Play("ANIM_Idle");
-            if (canMove)
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
+            {
+                anim.Play("ANIM_Run");
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+                inputHorizontal = Input.GetAxisRaw("Horizontal");
+                rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+            }
+
+            if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.RightArrow) == false && Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.LeftArrow) == false )
+            {
+                anim.Play("ANIM_Idle");
+            }
+            
+            
+            /*if (canMove)
             {
                
 
-                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                if (canMove && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
                 {
 
                     transform.rotation = Quaternion.Euler(0, 90, 0);
-                    Move();
+                    //Move();
+                    
 
                 }
 
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                if (canMove && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
                 {
 
                     transform.rotation = Quaternion.Euler(0, -90, 0);
-                    Move();
-
+                    //Move();
+                    
                 }
 
                 
-            }
+            } */
 
 
             
         }
         #endregion
 
-        #region - PUBLIC_FUNCTIONS -
+       /* #region - PUBLIC_FUNCTIONS -
 
 
 
@@ -96,9 +118,7 @@ namespace Pelicas
             anim.Play("ANIM_Run");
         }
 
-
-
-        #endregion
+        #endregion*/
     }
 }
 
