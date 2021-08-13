@@ -62,7 +62,7 @@ namespace Pelicas
                     tuto.step_2 = true;
                     tuto.step_1 = false;
                     Debug.Log("Step is 2");
-                    tutoTrigger.canInteract = true;
+                    tutoTrigger.canInteract = false;
                     tutoTrigger.canPreview = true;
                 }
                 

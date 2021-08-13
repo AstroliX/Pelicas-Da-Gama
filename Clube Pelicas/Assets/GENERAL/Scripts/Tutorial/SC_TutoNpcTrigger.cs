@@ -12,6 +12,7 @@ namespace Pelicas
         [SerializeField] GameObject dialog_1;
         [SerializeField] GameObject dialog_2;
         [SerializeField] GameObject dialog_3;
+        [SerializeField] GameObject dialog_4;
         [SerializeField] GameObject goBack;
 
         [Space]
@@ -79,6 +80,7 @@ namespace Pelicas
             canInteract = true;
             canPreview = true;
             
+
         }
 
         private void Update()
@@ -101,6 +103,7 @@ namespace Pelicas
             if (other.gameObject.tag == "Player" && canPreview)
             {
                 npcPreview.SetActive(true);
+                canInteract = true;
 
             }
 
@@ -229,6 +232,7 @@ namespace Pelicas
             if (canGoBack)
             {
                 npcCam_1.SetActive(false);
+                cursorScript.DeactivateCursor();
                 goBack.SetActive(false);
                 canPreview = true;
             }
@@ -238,6 +242,7 @@ namespace Pelicas
                 npcCam_1.SetActive(false);
                 canPreview = true;
                 canGoBack = true;
+                PlayerPrefs.SetInt("secondTime", 1);
             }
 
            
@@ -339,7 +344,14 @@ namespace Pelicas
             {
 
                 goBack.SetActive(true);
+                cursorScript.ActivateCursor();
                 npcCam_1.SetActive(true);
+            }
+
+            if(tuto.step_4 == true)
+            {
+                dialog_4.SetActive(true);
+                npcCam_2.SetActive(true);
             }
 
 
