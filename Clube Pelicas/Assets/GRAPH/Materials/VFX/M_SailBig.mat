@@ -46,10 +46,10 @@ Material:
     m_Colors:
     - Color_3ba992a843ab42a994336cf758dd14c9: {r: 0.8509804, g: 0.8, b: 0.75686276, a: 0}
     - Color_ba480ae82cc441909ca6c081541f5122: {r: 0.8490566, g: 0.7991711, b: 0.756942, a: 0}
-    - Color_e48b53a66e1d4e01a5ffa78761a5fc1a: {r: 0.754717, g: 0.41844028, b: 0.13883947, a: 0}
-    - Color_e48b53a66e1d4e01a5ffa78761a5fc1a_1: {r: 0.9725491, g: 0.5411765, b: 0.18039216, a: 0}
+    - Color_e48b53a66e1d4e01a5ffa78761a5fc1a: {r: 1, g: 0.35682577, b: 0.13679248, a: 1}
+    - Color_e48b53a66e1d4e01a5ffa78761a5fc1a_1: {r: 0.990566, g: 0.533554, b: 0.21960661, a: 1}
     - Vector2_0261c193710140beb5e71eee135897ac: {r: 0.25, g: 1.7, b: 0, a: 0}
     - Vector2_19b5b31377224d249cfbdf077e0159df: {r: -0.09, g: -0.19, b: 0, a: 0}
     - Vector3_d1ad12f64f764879992ceddc2ea300bf: {r: 0, g: 0, b: 1, a: 0}
-    - _LogoColor: {r: 1, g: 0.8980392, b: 0.5137255, a: 0}
+    - _LogoColor: {r: 1, g: 0.78589714, b: 0.4292453, a: 1}
   m_BuildTextureStacks: []

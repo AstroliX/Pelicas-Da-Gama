@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TownLimit
   - StopMoving
+  - Canvas
   layers:
   - Default
   - TransparentFX

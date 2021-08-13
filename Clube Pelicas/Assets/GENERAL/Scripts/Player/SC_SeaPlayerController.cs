@@ -6,11 +6,7 @@ namespace Pelicas
 {
     public class SC_SeaPlayerController : MonoBehaviour
     {
-
-
-     
-
-        [Space]
+      [Space]
         [SerializeField] float speed;
         private float inputHorizontal;
         public bool canMove;
@@ -33,7 +29,7 @@ namespace Pelicas
             anim = GetComponent<Animation>();
         }
 
-        private void Start()
+        public void Start()
         {
             canMove = true;
             seaCanDisplay = true;
@@ -49,57 +45,28 @@ namespace Pelicas
             {
                 anim.Play("ANIM_Talk");
             }
-
-            anim.Play("ANIM_Idle");
-            if (canMove)
+          
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow))
             {
-               
-
-                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, 90, 0);
-                    Move();
-
-                }
-
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-                {
-
-                    transform.rotation = Quaternion.Euler(0, -90, 0);
-                    Move();
-
-                }
-
-                
+                anim.Play("ANIM_Run");
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+                inputHorizontal = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
             }
 
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
+            {
+                anim.Play("ANIM_Run");
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+                inputHorizontal = Input.GetAxisRaw("Horizontal");
+                rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+            }
 
-            
+            if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.RightArrow) == false && Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.LeftArrow) == false )
+            {
+                anim.Play("ANIM_Idle");
+            }            
         }
-        #endregion
-
-        #region - PUBLIC_FUNCTIONS -
-
-
-
-
-        #endregion
-
-        #region - PRIVATE_FUNCTIONS -
-
-        void Move()
-        {
-            anim.Stop("ANIM_Idle");
-            inputHorizontal = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
-            anim.Play("ANIM_Run");
-        }
-
-
-
         #endregion
     }
 }
-
-
