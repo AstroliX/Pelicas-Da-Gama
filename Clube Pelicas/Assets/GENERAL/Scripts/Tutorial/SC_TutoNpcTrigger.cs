@@ -17,6 +17,8 @@ namespace Pelicas
         [SerializeField] GameObject dialog_5;
         [SerializeField] GameObject dialog_6;
         [SerializeField] GameObject dialog_7;
+        [SerializeField] GameObject dialog_8;
+        [SerializeField] GameObject dialog_9;
 
 
         [Space]
@@ -246,6 +248,11 @@ namespace Pelicas
                 canPreview = true;
             }
 
+            if (tuto.step_9)
+            {
+                SceneManager.LoadScene("Scene_Sea");
+            }
+
             if (tuto.step_3)
             {
                 npcCam_1.SetActive(false);
@@ -253,6 +260,15 @@ namespace Pelicas
                 canGoBack = true;
                 PlayerPrefs.SetInt("secondTime", 1);
             }
+
+            if (tuto.step_8)
+            {
+                npcCam_1.SetActive(false);
+                Debug.Log("Step is 9");
+                tuto.step_9 = true;
+                tuto.step_8 = false;
+            }
+
 
             if (tuto.step_4)
             {
@@ -273,6 +289,7 @@ namespace Pelicas
             if (tuto.step_7)
             {
                 npcCam_1.SetActive(false);
+                npcController.waypointIndex = 0;
                 tuto.step_8 = true;
                 npcController.isMoving = true;
                 tuto.step_7 = false;
@@ -285,13 +302,16 @@ namespace Pelicas
                 npcCam_1.SetActive(false);
                 Debug.Log("Step is 7");
                 tuto.step_7 = true;
-                npcController.waypointIndex = 1;
+                npcController.waypointIndex = 0;
                 npcController.isMoving = true;
                 tuto.step_6 = false;
             }
 
             
 
+            
+
+            
 
         }
 
@@ -425,6 +445,18 @@ namespace Pelicas
                 if (tuto.step_7)
                 {
                     dialog_7.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_8)
+                {
+                    dialog_8.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_9)
+                {
+                    dialog_9.SetActive(true);
                     npcCam_1.SetActive(true);
                 }
             }

@@ -74,10 +74,7 @@ namespace Pelicas
 
             }
 
-            if (tuto.step_8)
-            {
-                waypoints_3[1].gameObject.SetActive(false);
-            }
+
         }
 
         private void OnTriggerEnter(Collider other)
