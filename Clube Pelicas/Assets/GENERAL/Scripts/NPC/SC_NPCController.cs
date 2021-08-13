@@ -50,6 +50,7 @@ namespace Pelicas
         SC_NPCAnim npcAnim;
         SC_TutoNpcController tutoNpcController;
         SC_TutoNpcTrigger tutoNPCTrigger;
+        SC_TutoManager tuto;
 
         #region - UNITY_FUNCTIONS -
 
@@ -59,6 +60,7 @@ namespace Pelicas
             seaPlayerScript = FindObjectOfType<SC_SeaPlayerController>();
             cursorScript = FindObjectOfType<SC_CursorController>();
             npcAnim = FindObjectOfType<SC_NPCAnim>();
+            tuto = FindObjectOfType<SC_TutoManager>();
 
             T_player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -211,6 +213,16 @@ namespace Pelicas
             
             LeaveSetup();
             //animation / transition
+            if (isTuto)
+            {
+                if (tuto.step_5)
+                {
+                    Debug.Log("Step is 6");
+                    tutoNPCTrigger.playerWithKing = true;
+                    
+                }
+            }
+            
 
 
             palace.SetActive(true);

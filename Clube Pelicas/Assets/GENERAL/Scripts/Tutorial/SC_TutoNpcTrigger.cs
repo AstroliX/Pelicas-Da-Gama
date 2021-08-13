@@ -14,6 +14,8 @@ namespace Pelicas
         [SerializeField] GameObject dialog_3;
         [SerializeField] GameObject dialog_4;
         [SerializeField] GameObject goBack;
+        [SerializeField] GameObject dialog_5;
+
 
         [Space]
         [Header("Cameras")]
@@ -26,6 +28,7 @@ namespace Pelicas
         [Header("Bools")]
         public bool canInteract;
         public bool isTalking;
+        public bool playerWithKing;
 
         [Space]
         [Header("King's taxi random shit")]
@@ -245,7 +248,13 @@ namespace Pelicas
                 PlayerPrefs.SetInt("secondTime", 1);
             }
 
-           
+            if (tuto.step_4)
+            {
+                npcCam_2.SetActive(false);
+                canPreview = false;
+                canInteract = false;
+                npcController.isMoving = true;
+            }
             
 
         }
@@ -352,6 +361,12 @@ namespace Pelicas
             {
                 dialog_4.SetActive(true);
                 npcCam_2.SetActive(true);
+            }
+
+            if(tuto.step_5 == true)
+            {
+                dialog_5.SetActive(true);
+                npcCam_1.SetActive(true);
             }
 
 

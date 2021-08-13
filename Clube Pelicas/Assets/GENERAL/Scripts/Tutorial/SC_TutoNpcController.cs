@@ -29,6 +29,10 @@ namespace Pelicas
         private void Start()
         {
             //transform.position = waypoints_1[waypointIndex].transform.position;
+            if (tuto.step_4)
+            {
+                waypoints_1[3].gameObject.SetActive(false);
+            }
         }
 
         private void Update()
@@ -43,9 +47,9 @@ namespace Pelicas
                 {
 
                 }
-                else if (tuto.step_3)
+                else if (tuto.step_4)
                 {
-
+                    Move_2();
                 }
                 
 
@@ -60,10 +64,20 @@ namespace Pelicas
                 if (tuto.step_1)
                 {
                     tuto.step_2 = true;
-                    tuto.step_1 = false;
+               
                     Debug.Log("Step is 2");
                     tutoTrigger.canInteract = false;
                     tutoTrigger.canPreview = true;
+                    tuto.step_1 = false;
+                }
+
+                if (tuto.step_4)
+                {
+                    tutoTrigger.canInteract = false;
+                    tutoTrigger.canPreview = true;
+                    Debug.Log("Step is 5");
+                    tuto.step_5 = true;
+                    tuto.step_4 = false;
                 }
                 
             }
@@ -86,11 +100,22 @@ namespace Pelicas
             }
         }
 
+        public void Move_2()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, waypoints_2[waypointIndex].position, speed * Time.deltaTime);
+
+
+            if (Vector3.Distance(transform.position, waypoints_2[waypointIndex].position) < 0.1f)
+            {
+                waypointIndex++;
+            }
+        }
+
         #endregion
 
         #region - PRIVATE_FUNCTIONS -
 
-        
+
 
         #endregion
     }
