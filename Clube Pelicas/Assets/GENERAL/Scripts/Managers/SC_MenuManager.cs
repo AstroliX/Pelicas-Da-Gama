@@ -29,6 +29,7 @@ namespace Pelicas
         SC_PlayerController player;
         SC_SeaPlayerController seaPlayer;
         SC_TutoPlayerController tutoPlayer;
+        SC_FirstInstanceManager firstInstance;
 
 
         #region - UNITY_FUNCTIONS -
@@ -40,6 +41,11 @@ namespace Pelicas
             tutoPlayer = FindObjectOfType<SC_TutoPlayerController>();
             Cursor.lockState = CursorLockMode.None;
 
+
+            if (isMainMenu)
+            {
+                firstInstance = FindObjectOfType<SC_FirstInstanceManager>();
+            }
         }
 
 
@@ -80,9 +86,18 @@ namespace Pelicas
 
         #region - PUBLIC_FUNCTIONS -
 
-        public void LaunchGame(string sceneName)
+        public void LaunchGame()
         {
-            SceneManager.LoadScene(sceneName);
+
+            if (firstInstance.canTuto)
+            {
+                SceneManager.LoadScene("Scene_Tuto");
+            }
+            else if(!firstInstance.canTuto)
+            {
+                SceneManager.LoadScene("Scene_Main");
+            }
+            
         }
 
         public void OpenHelpMenu()
