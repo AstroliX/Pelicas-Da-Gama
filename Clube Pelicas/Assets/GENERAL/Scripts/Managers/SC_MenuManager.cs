@@ -35,6 +35,8 @@ namespace Pelicas
             cursor = FindObjectOfType<SC_CursorController>();
             player = FindObjectOfType<SC_PlayerController>();
             seaPlayer = FindObjectOfType<SC_SeaPlayerController>();
+            Cursor.lockState = CursorLockMode.None;
+
         }
 
 
