@@ -220,6 +220,7 @@ namespace Pelicas
                     Debug.Log("Step is 6");
                     tutoNPCTrigger.playerWithKing = true;
                     
+                    
                 }
             }
             
@@ -238,6 +239,7 @@ namespace Pelicas
             playerScript.enabled = false;
             T_player.position = new Vector3(-5, 0.70f, -34);
 
+           
             
             //animation / transition
 

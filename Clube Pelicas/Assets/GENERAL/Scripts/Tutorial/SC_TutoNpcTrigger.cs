@@ -15,6 +15,7 @@ namespace Pelicas
         [SerializeField] GameObject dialog_4;
         [SerializeField] GameObject goBack;
         [SerializeField] GameObject dialog_5;
+        [SerializeField] GameObject dialog_6;
 
 
         [Space]
@@ -255,7 +256,21 @@ namespace Pelicas
                 canInteract = false;
                 npcController.isMoving = true;
             }
-            
+
+            if (tuto.step_5)
+            {
+                npcCam_1.SetActive(false);
+                canPreview = true;
+            }
+
+            if (tuto.step_6)
+            {
+                npcCam_1.SetActive(false);
+                canPreview = true;
+                tuto.step_7 = true;
+                tuto.step_6 = false;
+            }
+
 
         }
 
@@ -366,6 +381,12 @@ namespace Pelicas
             if(tuto.step_5 == true)
             {
                 dialog_5.SetActive(true);
+                npcCam_1.SetActive(true);
+            }
+
+            if (tuto.step_6)
+            {
+                dialog_6.SetActive(true);
                 npcCam_1.SetActive(true);
             }
 

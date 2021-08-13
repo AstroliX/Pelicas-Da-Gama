@@ -20,7 +20,7 @@ namespace Pelicas
 
         private void Update()
         {
-            if (tuto.step_6)
+            if (tuto.step_7)
             {
                 collider_5.SetActive(false);
             }

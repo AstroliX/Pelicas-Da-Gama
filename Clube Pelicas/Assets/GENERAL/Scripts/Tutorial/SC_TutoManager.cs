@@ -13,6 +13,7 @@ namespace Pelicas
         public bool step_4;
         public bool step_5;
         public bool step_6;
+        public bool step_7;
 
         [Space]
         [SerializeField] Transform advisor;
