@@ -9,11 +9,17 @@ namespace Pelicas
         [SerializeField] Transform[] waypoints_1;
         [SerializeField] Transform[] waypoints_2;
         [SerializeField] Transform[] waypoints_3;
+        [SerializeField] Transform[] waypoints_4;
         [SerializeField] float speed;
         public bool isMoving;
 
+        [SerializeField] GameObject wGroup_1;
+        [SerializeField] GameObject wGroup_2;
+        [SerializeField] GameObject wGroup_3;
+        [SerializeField] GameObject wGroup_4;
 
-        int waypointIndex;
+        public int waypointIndex;
+      
 
         SC_TutoManager tuto;
         SC_TutoNpcTrigger tutoTrigger;
@@ -41,7 +47,9 @@ namespace Pelicas
             {
                 if (tuto.step_1)
                 {
+                    wGroup_1.SetActive(true);
                     Move_1();
+                    
                 }
                 else if (tuto.step_2)
                 {
@@ -49,10 +57,26 @@ namespace Pelicas
                 }
                 else if (tuto.step_4)
                 {
+                    wGroup_2.SetActive(true);
                     Move_2();
+                }
+                else if (tuto.step_7)
+                {
+                    wGroup_3.SetActive(true);
+                    Move_3();
+                }
+                else if (tuto.step_8)
+                {
+                    wGroup_4.SetActive(true);
+                    Move_4();
                 }
                 
 
+            }
+
+            if (tuto.step_8)
+            {
+                waypoints_3[1].gameObject.SetActive(false);
             }
         }
 
@@ -60,9 +84,11 @@ namespace Pelicas
         {
             if(other.gameObject.tag == "StopMoving")
             {
+                Debug.Log("Arrived");
                 isMoving = false;
                 if (tuto.step_1)
                 {
+                    wGroup_1.SetActive(false);
                     tuto.step_2 = true;
                
                     Debug.Log("Step is 2");
@@ -73,13 +99,34 @@ namespace Pelicas
 
                 if (tuto.step_4)
                 {
+                    wGroup_2.SetActive(false);
                     tutoTrigger.canInteract = false;
                     tutoTrigger.canPreview = true;
                     Debug.Log("Step is 5");
                     tuto.step_5 = true;
                     tuto.step_4 = false;
                 }
-                
+
+                if (tuto.step_7)
+                {
+                    Debug.Log("wALK 3 DONE");
+                    wGroup_3.SetActive(false);
+                    tutoTrigger.canInteract = false;
+                    tutoTrigger.canPreview = true;
+
+                }
+
+                if (tuto.step_8)
+                {
+                    Debug.Log("wALK 4 DONE");
+                    wGroup_4.SetActive(false);
+                    tutoTrigger.canInteract = false;
+                    tutoTrigger.canPreview = true;
+
+                }
+
+
+
             }
         }
 
@@ -106,6 +153,29 @@ namespace Pelicas
 
 
             if (Vector3.Distance(transform.position, waypoints_2[waypointIndex].position) < 0.1f)
+            {
+                waypointIndex++;
+            }
+        }
+
+        public void Move_3()
+        {
+            
+            transform.position = Vector3.MoveTowards(transform.position, waypoints_3[waypointIndex].position, speed * Time.deltaTime);
+
+
+            if (Vector3.Distance(transform.position, waypoints_3[waypointIndex].position) < 0.1f)
+            {
+                waypointIndex++;
+            }
+        }
+
+        public void Move_4()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, waypoints_4[waypointIndex].position, speed * Time.deltaTime);
+
+
+            if (Vector3.Distance(transform.position, waypoints_4[waypointIndex].position) < 0.1f)
             {
                 waypointIndex++;
             }

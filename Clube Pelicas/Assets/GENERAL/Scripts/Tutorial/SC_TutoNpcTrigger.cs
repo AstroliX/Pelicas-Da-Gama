@@ -16,6 +16,7 @@ namespace Pelicas
         [SerializeField] GameObject goBack;
         [SerializeField] GameObject dialog_5;
         [SerializeField] GameObject dialog_6;
+        [SerializeField] GameObject dialog_7;
 
 
         [Space]
@@ -44,6 +45,7 @@ namespace Pelicas
         bool isGoodbye;
         bool isHappy;
         bool canGoBack;
+        [SerializeField] bool dialogGone_5;
         public bool canPreview;
 
        
@@ -137,7 +139,10 @@ namespace Pelicas
                     {
                         if (!tutoPlayer.isDisplaying && tutoPlayer.canTalk && canInteract)
                         {
-                            NPCisTalking();
+
+                          NPCisTalking();
+                                
+                            
                         }
                     }
                     else
@@ -162,7 +167,7 @@ namespace Pelicas
         {
 
             yield return new WaitForSeconds(2);
-            tutoPlayer.enabled = true;
+
         }
 
         IEnumerator Goodbye()
@@ -260,16 +265,32 @@ namespace Pelicas
             if (tuto.step_5)
             {
                 npcCam_1.SetActive(false);
+                dialogGone_5 = true;
                 canPreview = true;
+                canInteract = true;
+            }
+
+            if (tuto.step_7)
+            {
+                npcCam_1.SetActive(false);
+                tuto.step_8 = true;
+                npcController.isMoving = true;
+                tuto.step_7 = false;
+                Debug.Log("Step is 8");
+
             }
 
             if (tuto.step_6)
             {
                 npcCam_1.SetActive(false);
-                canPreview = true;
+                Debug.Log("Step is 7");
                 tuto.step_7 = true;
+                npcController.waypointIndex = 1;
+                npcController.isMoving = true;
                 tuto.step_6 = false;
             }
+
+            
 
 
         }
@@ -325,70 +346,89 @@ namespace Pelicas
 
         void NPCisTalking()
         {
-            //isTalking = true;
-            canPreview = false;
+            if(tuto.step_5 && dialogGone_5)
+            {
+                Debug.Log("can't tlk right now");
+            }
+            else
+            {
+                //isTalking = true;
+                canPreview = false;
 
-            Debug.Log("Ola");
+                Debug.Log("Ola");
 
-       
+
+
+                //tutoPlayer.isTalking = true;
+
+                tutoPlayer.canMove = false;
+                tutoPlayer.canDisplay = false;
+
+
+
+                playerCam.SetActive(false);
+
+
+
+
+
+
+                npcPreview.SetActive(false);
+
+                if (tuto.step_1)
+                {
+                    dialog_1.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_2)
+                {
+                    dialog_2.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_3 && !canGoBack)
+                {
+                    dialog_3.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+                else if (canGoBack)
+                {
+
+                    goBack.SetActive(true);
+                    cursorScript.ActivateCursor();
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_4 == true)
+                {
+                    dialog_4.SetActive(true);
+                    npcCam_2.SetActive(true);
+                }
+
+                if (tuto.step_5 == true)
+                {
+
+                    dialog_5.SetActive(true);
+                    npcCam_1.SetActive(true);
+
+
+
+                }
+
+                if (tuto.step_6)
+                {
+                    dialog_6.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+
+                if (tuto.step_7)
+                {
+                    dialog_7.SetActive(true);
+                    npcCam_1.SetActive(true);
+                }
+            }
             
-            //tutoPlayer.isTalking = true;
-                
-            tutoPlayer.canMove = false;
-            tutoPlayer.canDisplay = false;
-            
-            
-
-            
-            playerCam.SetActive(false);
-            
-
-
-
-            npcPreview.SetActive(false);
-
-             if (tuto.step_1)
-            {
-                dialog_1.SetActive(true);
-                npcCam_1.SetActive(true);
-            }
-
-            if (tuto.step_2)
-            {
-                dialog_2.SetActive(true);
-                npcCam_1.SetActive(true);
-            }
-
-            if (tuto.step_3 && !canGoBack)
-            {
-                dialog_3.SetActive(true);
-                npcCam_1.SetActive(true);
-            }
-            else if (canGoBack)
-            {
-
-                goBack.SetActive(true);
-                cursorScript.ActivateCursor();
-                npcCam_1.SetActive(true);
-            }
-
-            if(tuto.step_4 == true)
-            {
-                dialog_4.SetActive(true);
-                npcCam_2.SetActive(true);
-            }
-
-            if(tuto.step_5 == true)
-            {
-                dialog_5.SetActive(true);
-                npcCam_1.SetActive(true);
-            }
-
-            if (tuto.step_6)
-            {
-                dialog_6.SetActive(true);
-                npcCam_1.SetActive(true);
-            }
 
 
         }

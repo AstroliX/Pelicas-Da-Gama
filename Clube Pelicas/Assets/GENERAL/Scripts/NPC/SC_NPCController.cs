@@ -154,7 +154,11 @@ namespace Pelicas
         {
             
             yield return new WaitForSeconds(2);
-            playerScript.enabled = true;
+            if (!isTuto)
+            {
+                playerScript.enabled = true;
+            }
+            
         }
 
         IEnumerator Goodbye()
@@ -219,7 +223,8 @@ namespace Pelicas
                 {
                     Debug.Log("Step is 6");
                     tutoNPCTrigger.playerWithKing = true;
-                    
+                    tuto.step_6 = true;
+                    tuto.step_5 = false;
                     
                 }
             }

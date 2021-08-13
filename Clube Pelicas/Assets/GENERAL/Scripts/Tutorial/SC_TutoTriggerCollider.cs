@@ -16,11 +16,12 @@ namespace Pelicas
         private void Awake()
         {
             tuto = FindObjectOfType<SC_TutoManager>();
+            tutoTrigger = FindObjectOfType<SC_TutoNpcTrigger>();
         }
 
         private void Update()
         {
-            if (tuto.step_7)
+            if (tuto.step_6)
             {
                 collider_5.SetActive(false);
             }
@@ -31,6 +32,7 @@ namespace Pelicas
             if(other.gameObject.tag == "Player" && tuto.step_5)
             {
                 collider_5.SetActive(true);
+                tutoTrigger.canInteract = false;
 
             }
         }
