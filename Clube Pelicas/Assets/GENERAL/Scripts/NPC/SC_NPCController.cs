@@ -183,8 +183,16 @@ namespace Pelicas
         public void GoToPalace()
         {
             //T_player.position = kingPalace.transform.position;
-            playerScript.enabled = false;
-            T_player.position = new Vector3(0, 0, 380);
+
+            StartCoroutine(StartDelay());
+            IEnumerator StartDelay()
+            {
+                yield return new WaitForSeconds(2);
+                playerScript.enabled = false;
+                T_player.position = new Vector3(0, 0, 380);
+                town.SetActive(false);
+            }
+
             
             LeaveSetup();
             //animation / transition
@@ -192,7 +200,7 @@ namespace Pelicas
 
             palace.SetActive(true);
             
-            town.SetActive(false);
+           
             StartCoroutine(Wait());
         }
 
@@ -200,14 +208,21 @@ namespace Pelicas
         {
             //T_player.position = kingPalace.transform.position;
             LeaveSetup();
+            StartCoroutine(StartDelay());
+            IEnumerator StartDelay()
+            {
+                yield return new WaitForSeconds(2);
+                playerScript.enabled = false;
+                T_player.position = new Vector3(-5, 0.70f, -34);
+                palace.SetActive(false);
+            }
             playerScript.enabled = false;
-            T_player.position = new Vector3(-5, 0.70f, -34);
 
             
             //animation / transition
 
 
-            palace.SetActive(false);
+    
 
             town.SetActive(true);
             StartCoroutine(Wait());

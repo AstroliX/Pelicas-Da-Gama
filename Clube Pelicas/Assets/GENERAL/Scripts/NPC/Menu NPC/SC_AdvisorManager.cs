@@ -122,8 +122,19 @@ namespace Pelicas
 
         public void YesGoToSea(string levelName)
         {
-            
-            SceneManager.LoadScene(levelName);
+
+            StartCoroutine(StartDelay());
+
+            IEnumerator StartDelay()
+
+            {
+
+                yield return new WaitForSeconds(2);
+
+                SceneManager.LoadScene(levelName);
+
+            }
+
         }
 
         public void NoToSea()

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TownLimit
+  - Canvas
   layers:
   - Default
   - TransparentFX

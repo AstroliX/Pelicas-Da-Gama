@@ -167,7 +167,21 @@ namespace Pelicas
             }
             PlayerPrefs.SetFloat("crew", resources.crew);
 
-            SceneManager.LoadScene(levelName);
+            StartCoroutine(StartDelay());
+
+            IEnumerator StartDelay()
+
+            {
+
+
+                yield return new WaitForSeconds(2);
+
+                SceneManager.LoadScene(levelName);
+
+            }
+
+            
+          
         }
 
         public void NoIAmNotSure()
