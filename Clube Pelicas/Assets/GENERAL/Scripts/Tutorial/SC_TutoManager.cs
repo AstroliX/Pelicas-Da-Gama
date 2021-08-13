@@ -11,9 +11,19 @@ namespace Pelicas
         public bool step_2;
         public bool step_3;
 
+        [SerializeField] bool isSea;
+
         private void Start()
         {
-            step_1 = true;
+            if (!isSea)
+            {
+                step_1 = true;
+            }
+            else
+            {
+                step_3 = true;
+            }
+            
         }
     }
 }

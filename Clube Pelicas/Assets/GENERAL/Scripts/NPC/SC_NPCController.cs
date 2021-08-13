@@ -32,6 +32,7 @@ namespace Pelicas
         [SerializeField] GameObject palace;
         bool isTraveling;
 
+        [SerializeField] bool isTuto;
         bool isGoodbye;
         bool isHappy;
 
@@ -47,7 +48,8 @@ namespace Pelicas
         SC_SeaPlayerController seaPlayerScript;
         SC_CursorController cursorScript;
         SC_NPCAnim npcAnim;
-
+        SC_TutoNpcController tutoNpcController;
+        SC_TutoNpcTrigger tutoNPCTrigger;
 
         #region - UNITY_FUNCTIONS -
 
@@ -59,6 +61,12 @@ namespace Pelicas
             npcAnim = FindObjectOfType<SC_NPCAnim>();
 
             T_player = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (isTuto)
+            {
+                tutoNpcController = FindObjectOfType<SC_TutoNpcController>();
+                tutoNPCTrigger = FindObjectOfType<SC_TutoNpcTrigger>();
+            }
 
         }
 
@@ -78,10 +86,18 @@ namespace Pelicas
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && !isTuto)
             {
                 npcPreview.SetActive(true);
 
+            }
+
+            if(other.gameObject.tag == "Player" && isTuto)
+            {
+                if (!tutoNpcController.isMoving)
+                {
+                    npcPreview.SetActive(true);
+                }
             }
 
            /* if(other.gameObject.tag == "TownLimit")
@@ -101,9 +117,16 @@ namespace Pelicas
             {
                 if (Input.GetKeyDown(KeyCode.T))
                 {
-                    if (!isOnSea)
+                    if (!isOnSea && !isTuto)
                     {
                         if (!playerScript.isDisplaying)
+                        {
+                            NPCisTalking();
+                        }
+                    }
+                    else if(!isOnSea && isTuto)
+                    {
+                        if (!tutoNpcController.isMoving && tutoNPCTrigger.canInteract)
                         {
                             NPCisTalking();
                         }
@@ -231,7 +254,11 @@ namespace Pelicas
 
         void NPCisTalking()
         {
-            isTalking = true;
+            if (!isTuto)
+            {
+                isTalking = true;
+            }
+            
             
 
             if (!isOnSea)

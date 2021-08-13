@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Pelicas
 {
@@ -10,6 +11,8 @@ namespace Pelicas
         [SerializeField] GameObject npcPreview;
         [SerializeField] GameObject dialog_1;
         [SerializeField] GameObject dialog_2;
+        [SerializeField] GameObject dialog_3;
+        [SerializeField] GameObject goBack;
 
         [Space]
         [Header("Cameras")]
@@ -35,6 +38,8 @@ namespace Pelicas
 
         bool isGoodbye;
         bool isHappy;
+        bool canGoBack;
+        public bool canPreview;
 
        
 
@@ -72,6 +77,7 @@ namespace Pelicas
         private void Start()
         {
             canInteract = true;
+            canPreview = true;
             
         }
 
@@ -82,11 +88,17 @@ namespace Pelicas
                 npcGo.GetComponent<SC_TutoNpcAnim>().canIdle = false;
                 npcGo.GetComponent<SC_TutoNpcAnim>().PlayNPCAnimBye();
             }
+
+            if (npcController.isMoving)
+            {
+                canInteract = false;
+            }
+          
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && canPreview)
             {
                 npcPreview.SetActive(true);
 
@@ -107,17 +119,23 @@ namespace Pelicas
         {
             if (other.gameObject.tag == "Player")
             {
+                if (canPreview)
+                {
+                    npcPreview.SetActive(true);
+                }
+                
                 if (Input.GetKeyDown(KeyCode.T))
                 {
                     if (!isOnSea)
                     {
-                        if (!tutoPlayer.isDisplaying && tutoPlayer.canTalk)
+                        if (!tutoPlayer.isDisplaying && tutoPlayer.canTalk && canInteract)
                         {
                             NPCisTalking();
                         }
                     }
                     else
                     {
+
                         NPCisTalking();
                     }
 
@@ -200,6 +218,29 @@ namespace Pelicas
                 npcCam_1.SetActive(false);
                 npcController.isMoving = true;
             }
+
+            if (tuto.step_2)
+            {
+                tuto.step_3 = true;
+                tuto.step_2 = false;
+                SceneManager.LoadScene("Scene_TutoSea");
+            }
+
+            if (canGoBack)
+            {
+                npcCam_1.SetActive(false);
+                goBack.SetActive(false);
+                canPreview = true;
+            }
+
+            if (tuto.step_3)
+            {
+                npcCam_1.SetActive(false);
+                canPreview = true;
+                canGoBack = true;
+            }
+
+           
             
 
         }
@@ -256,22 +297,18 @@ namespace Pelicas
         void NPCisTalking()
         {
             //isTalking = true;
+            canPreview = false;
 
             Debug.Log("Ola");
 
-            if (!isOnSea)
-            {
-                //tutoPlayer.isTalking = true;
+       
+            
+            //tutoPlayer.isTalking = true;
                 
-                tutoPlayer.canMove = false;
-                tutoPlayer.canDisplay = false;
-            }
-            else
-            {
-                seaPlayerScript.isSeaTalking = true;
-                seaPlayerScript.canMove = false;
-                seaPlayerScript.isSeaTalking = true;
-            }
+            tutoPlayer.canMove = false;
+            tutoPlayer.canDisplay = false;
+            
+            
 
             
             playerCam.SetActive(false);
@@ -287,11 +324,23 @@ namespace Pelicas
                 npcCam_1.SetActive(true);
             }
 
-            /*if (tuto.step_2)
+            if (tuto.step_2)
             {
                 dialog_2.SetActive(true);
-                npcCam_2.SetActive(true);
-            }*/
+                npcCam_1.SetActive(true);
+            }
+
+            if (tuto.step_3 && !canGoBack)
+            {
+                dialog_3.SetActive(true);
+                npcCam_1.SetActive(true);
+            }
+            else if (canGoBack)
+            {
+
+                goBack.SetActive(true);
+                npcCam_1.SetActive(true);
+            }
 
 
         }

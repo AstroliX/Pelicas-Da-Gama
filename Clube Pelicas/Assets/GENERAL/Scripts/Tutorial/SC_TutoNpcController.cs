@@ -16,12 +16,14 @@ namespace Pelicas
         int waypointIndex;
 
         SC_TutoManager tuto;
+        SC_TutoNpcTrigger tutoTrigger;
 
         #region - UNITY_FUNCTIONS -
 
         private void Awake()
         {
             tuto = FindObjectOfType<SC_TutoManager>();
+            tutoTrigger = FindObjectOfType<SC_TutoNpcTrigger>();
         }
 
         private void Start()
@@ -59,6 +61,9 @@ namespace Pelicas
                 {
                     tuto.step_2 = true;
                     tuto.step_1 = false;
+                    Debug.Log("Step is 2");
+                    tutoTrigger.canInteract = true;
+                    tutoTrigger.canPreview = true;
                 }
                 
             }

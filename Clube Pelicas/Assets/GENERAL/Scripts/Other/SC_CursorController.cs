@@ -7,6 +7,7 @@ namespace Pelicas
     public class SC_CursorController : MonoBehaviour
     {
         [SerializeField] Texture2D cursorVEVO;
+        [SerializeField] bool isSea;
 
         SC_CameraController cameraScript;
 
@@ -14,7 +15,11 @@ namespace Pelicas
 
         private void Awake()
         {
-            cameraScript = FindObjectOfType<SC_CameraController>();
+            if (!isSea)
+            {
+                cameraScript = FindObjectOfType<SC_CameraController>();
+            }
+            
         }
 
         #endregion
@@ -27,14 +32,23 @@ namespace Pelicas
             Cursor.SetCursor(cursorVEVO, Vector2.zero, CursorMode.Auto);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            cameraScript.isInMenu = true;
+
+            if (!isSea)
+            {
+                cameraScript.isInMenu = true;
+            }
+            
 
         }
 
 
         public void DeactivateCursor()
         {
-            cameraScript.isInMenu = false;
+            if (!isSea)
+            {
+                cameraScript.isInMenu = false;
+            }
+            
             Cursor.visible = false;
             Cursor.SetCursor(cursorVEVO, Vector2.zero, CursorMode.Auto);
             Cursor.lockState = CursorLockMode.Locked;

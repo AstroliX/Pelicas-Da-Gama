@@ -21,6 +21,7 @@ namespace Pelicas
         public bool canTalk;
         public bool isTalking;
         public bool isDisplaying;
+        [SerializeField] bool isSea;
 
 
         [Space]
@@ -31,6 +32,7 @@ namespace Pelicas
 
 
         private Vector3 currentImpact;
+        private float inputHorizontal;
 
 
         SC_NPCController npc;
@@ -60,10 +62,34 @@ namespace Pelicas
         private void Update()
         {
 
+            if (isSea)
+            {
+                if (canMove)
+                {
 
 
+                    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                    {
 
-            if (Input.GetKeyDown(KeyCode.R))
+                        transform.rotation = Quaternion.Euler(0, 90, 0);
+                        MoveSea();
+
+                    }
+
+                    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                    {
+
+                        transform.rotation = Quaternion.Euler(0, -90, 0);
+                        MoveSea();
+
+                    }
+
+
+                }
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.R) && !isSea)
             {
                 if (canDisplay && !isTalking)
                 {
@@ -74,6 +100,10 @@ namespace Pelicas
 
             if (canMove && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)))
             {
+                if (!isSea)
+                {
+                    Move();
+                }
                 Move();
 
             }
@@ -161,6 +191,14 @@ namespace Pelicas
                 }
             }
 
+        }
+
+        void MoveSea()
+        {
+            anim.Stop("ANIM_Idle");
+            inputHorizontal = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(inputHorizontal * movementSpeed, rb.velocity.y);
+            anim.Play("ANIM_Run");
         }
 
         #endregion

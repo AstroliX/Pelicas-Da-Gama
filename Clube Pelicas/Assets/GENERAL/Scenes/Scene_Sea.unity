@@ -19465,6 +19465,7 @@ MonoBehaviour:
   taxiTown: {fileID: 0}
   town: {fileID: 0}
   palace: {fileID: 0}
+  isTuto: 0
   isOnSea: 1
   npcGo: {fileID: 3391550257827803503}
 --- !u!1 &1741774965
@@ -21537,6 +21538,7 @@ MonoBehaviour:
   enableMusic: 0
   enableSFX: 0
   isMainMenu: 0
+  isTuto: 0
   isSea: 1
   helpMenu: {fileID: 0}
   pauseMenu: {fileID: 1666448797}

@@ -13,6 +13,7 @@ namespace Pelicas
         public float typingSpeed;
         [SerializeField] GameObject continueButton;
         [SerializeField] GameObject menu;
+        [SerializeField] bool isSea;
 
         SC_TutoPlayerController tutoPlayer;
         SC_CursorController cursor;
@@ -44,6 +45,8 @@ namespace Pelicas
             {
                 continueButton.SetActive(true);
                 cursor.ActivateCursor();
+                
+                
 
             }
         }
@@ -80,8 +83,10 @@ namespace Pelicas
             {
                 textDisplayDoorLocked.text = "";
 
-                Debug.Log("Acabou?");
+
                 cursor.DeactivateCursor();
+                
+                
                 Destroy(menu);
                 setup.LeaveTalk();
 
