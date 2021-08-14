@@ -66,6 +66,7 @@ namespace Pelicas
         SC_TutoNpcAnim npcAnim;
         SC_TutoManager tuto;
         SC_TutoNpcController npcController;
+        SC_SeaPlayerController seaPlayer;
 
 
         #region - UNITY_FUNCTIONS -
@@ -80,6 +81,11 @@ namespace Pelicas
             npcController = FindObjectOfType<SC_TutoNpcController>();
 
             T_player = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (isOnSea)
+            {
+                seaPlayer = FindObjectOfType<SC_SeaPlayerController>();
+            }
 
         }
 
@@ -257,6 +263,9 @@ namespace Pelicas
             if (tuto.step_3)
             {
                 npcCam_1.SetActive(false);
+                seaPlayer.canMove = true;
+                seaPlayer.seaCanDisplay = true;
+
                 canPreview = true;
                 canGoBack = true;
                 PlayerPrefs.SetInt("secondTime", 1);
