@@ -85,6 +85,7 @@ namespace Pelicas
                 isMoving = false;
                 if (tuto.step_1)
                 {
+                    gameObject.transform.Rotate(0, 180, 0);
                     wGroup_1.SetActive(false);
                     tuto.step_2 = true;
                
@@ -96,6 +97,7 @@ namespace Pelicas
 
                 if (tuto.step_4)
                 {
+                    gameObject.transform.Rotate(0, 180, 0);
                     wGroup_2.SetActive(false);
                     tutoTrigger.canInteract = false;
                     tutoTrigger.canPreview = true;
@@ -106,6 +108,7 @@ namespace Pelicas
 
                 if (tuto.step_7)
                 {
+                    gameObject.transform.Rotate(0, 180, 0);
                     Debug.Log("wALK 3 DONE");
                     wGroup_3.SetActive(false);
                     tutoTrigger.canInteract = false;
@@ -115,6 +118,7 @@ namespace Pelicas
 
                 if (tuto.step_8)
                 {
+                    gameObject.transform.Rotate(0, 180, 0);
                     Debug.Log("wALK 4 DONE");
                     wGroup_4.SetActive(false);
                     tutoTrigger.canInteract = false;

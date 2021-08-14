@@ -13,6 +13,7 @@ namespace Pelicas
         public bool canTalk;
 
         SC_TutoNpcTrigger npc;
+        SC_TutoNpcController npcController;
         Animation anim;
 
         #region - UNITY_FUNCTIONS -
@@ -20,6 +21,7 @@ namespace Pelicas
         private void Awake()
         {
             npc = FindObjectOfType<SC_TutoNpcTrigger>();
+            npcController = FindObjectOfType<SC_TutoNpcController>();
             anim = GetComponent<Animation>();
         }
         private void Start()
@@ -30,15 +32,24 @@ namespace Pelicas
 
         private void Update()
         {
-
+            if(npcController.isMoving == true)
+            {
+                anim.Stop("ANIM_Idle");
+                anim.Play("ANIM_Run");
+            }
+            else
+            {
+                anim.Stop("ANIM_Run");
+                anim.Play("ANIM_Run");
+            }
 
             if (npcGo.GetComponent<SC_TutoNpcTrigger>().isTalking)
             {
-                if (!isKing & canTalk)
+                if (!isKing && canTalk && !npcController.isMoving)
                 {
                     anim.Play("ANIM_Talk");
                 }
-                else if (canTalk)
+                else if (canTalk && isKing)
                 {
                     anim.Play("ANIM_KingTalk");
                 }
@@ -47,11 +58,11 @@ namespace Pelicas
 
             if (!npcGo.GetComponent<SC_TutoNpcTrigger>().isTalking)
             {
-                if (!isKing && canIdle)
+                if (!isKing && canIdle && !npcController.isMoving)
                 {
                     anim.Play("ANIM_Idle");
                 }
-                else if (canIdle)
+                else if (canIdle && isKing)
                 {
                     anim.Play("ANIM_KingIdle");
                 }

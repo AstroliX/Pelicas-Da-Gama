@@ -230,6 +230,7 @@ namespace Pelicas
             if (tuto.step_1)
             {
                 npcCam_1.SetActive(false);
+                npcGo.transform.Rotate(0, 180, 0);
                 npcController.isMoving = true;
             }
 
