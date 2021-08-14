@@ -142,6 +142,7 @@ namespace Pelicas
         public void AreYouSure()
         {
             areYouSure.SetActive(true);
+            main_main.SetActive(false);
         }
 
         public void YesGoToSea(string levelName)
@@ -187,6 +188,7 @@ namespace Pelicas
         public void NoIAmNotSure()
         {
             areYouSure.SetActive(false);
+            main_main.SetActive(true);
         }
 
         public void GoToStock()

@@ -38,6 +38,14 @@ namespace Pelicas
 
         }
 
+        private void Update()
+        {
+            if (step_9)
+            {
+                PlayerPrefs.SetFloat("crew", 100f);
+            }
+        }
+
         private void Start()
         {
             
