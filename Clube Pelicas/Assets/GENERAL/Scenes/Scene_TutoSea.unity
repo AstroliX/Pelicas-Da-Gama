@@ -17687,17 +17687,25 @@ MonoBehaviour:
   dialog_1: {fileID: 0}
   dialog_2: {fileID: 0}
   dialog_3: {fileID: 949494610}
+  dialog_4: {fileID: 0}
   goBack: {fileID: 8594736269194602448}
+  dialog_5: {fileID: 0}
+  dialog_6: {fileID: 0}
+  dialog_7: {fileID: 0}
+  dialog_8: {fileID: 0}
+  dialog_9: {fileID: 0}
   playerCam: {fileID: 1604398991}
   npcCam: {fileID: 1954438967}
   npcCam_1: {fileID: 1954438967}
   npcCam_2: {fileID: 0}
   canInteract: 0
   isTalking: 0
+  playerWithKing: 0
   kingPalace: {fileID: 0}
   taxiTown: {fileID: 0}
   town: {fileID: 0}
   palace: {fileID: 0}
+  dialogGone_5: 0
   canPreview: 0
   isOnSea: 1
   npcGo: {fileID: 3391550257827803503}
@@ -19146,7 +19154,7 @@ MonoBehaviour:
   slot_6: {fileID: 1225025137}
   slot_7: {fileID: 906352400}
   slot_8: {fileID: 1091289992}
-  timeBtwResource: 3
+  timeBtwResource: 2
   collector: {fileID: 366764643}
 --- !u!114 &1982658331
 MonoBehaviour:
@@ -19163,6 +19171,14 @@ MonoBehaviour:
   step_1: 0
   step_2: 0
   step_3: 1
+  step_4: 0
+  step_5: 0
+  step_6: 0
+  step_7: 0
+  step_8: 0
+  step_9: 0
+  advisor: {fileID: 0}
+  player: {fileID: 0}
   isSea: 1
 --- !u!1 &2003987373
 GameObject:
@@ -31731,8 +31747,14 @@ MonoBehaviour:
   waypoints_1: []
   waypoints_2: []
   waypoints_3: []
+  waypoints_4: []
   speed: 0
   isMoving: 0
+  wGroup_1: {fileID: 0}
+  wGroup_2: {fileID: 0}
+  wGroup_3: {fileID: 0}
+  wGroup_4: {fileID: 0}
+  waypointIndex: 0
 --- !u!4 &3399090000138783982
 Transform:
   m_ObjectHideFlags: 0
@@ -58566,6 +58588,7 @@ MonoBehaviour:
   shader: {fileID: -6465566751694194690, guid: 5df60e2f1b501df46b8684dcaeede735, type: 3}
   Size: 0.5
   Position: {x: 0.03, y: 0.2}
+  AnimationLength: 0
 --- !u!222 &6333258067555385253
 CanvasRenderer:
   m_ObjectHideFlags: 0

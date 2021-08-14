@@ -185,7 +185,7 @@ namespace Pelicas
                 native = resource.nativeGift;
                 native_TXT.text = "" + native;
 
-                gold = resource.gold;
+                gold = PlayerPrefs.GetInt("gold");
                 gold_TXT.text = "" + gold;
             }
         }

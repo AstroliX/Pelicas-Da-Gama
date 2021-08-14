@@ -1022,7 +1022,7 @@ MonoBehaviour:
   rCollector_1: {fileID: 366764643}
   rCollector_2: {fileID: 1741774965}
   rCollector_3: {fileID: 589461008}
-  waitBetweenResource: 3
+  waitBetweenResource: 2
 --- !u!4 &175912020
 Transform:
   m_ObjectHideFlags: 0

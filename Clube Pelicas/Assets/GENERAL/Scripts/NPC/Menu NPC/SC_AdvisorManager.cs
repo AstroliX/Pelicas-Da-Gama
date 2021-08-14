@@ -72,15 +72,17 @@ namespace Pelicas
 
         private void Update()
         {
+            SetStateCrew();
+            crewTXT.text = crew + "/100";
             if (isCrewMenu)
             {
                 crew = resource.crew;
                 gold = resource.gold;
 
                 goldTXT.text = gold + "";
-                crewTXT.text = crew + "/100";
+                
 
-                SetStateCrew();
+                
             }
 
             if (isHappy)
@@ -264,7 +266,9 @@ namespace Pelicas
                 state_3.SetActive(true);
             }
 
-            if (resource.crew > 50 && resource.crew < 75)
+            
+
+            if (resource.crew >= 50 && resource.crew < 75)
             {
                 state_logo.GetComponent<Image>().sprite = s_state_2;
                 state_2.SetActive(true);
