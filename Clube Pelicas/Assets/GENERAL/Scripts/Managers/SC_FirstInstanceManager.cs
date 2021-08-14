@@ -10,6 +10,7 @@ namespace Pelicas
         [Space]
         [Header("Other")]
         [SerializeField] GameObject animIntro;
+        public bool canTuto;
 
 
         int notFirstInstance;
@@ -20,18 +21,19 @@ namespace Pelicas
         private void Awake()
         {
             
-            notFirstInstance = PlayerPrefs.GetInt("FirstInstance_2");
+            notFirstInstance = PlayerPrefs.GetInt("FirstInstance_6");
 
             if (Application.isEditor == false)
             {
                 if (PlayerPrefs.GetInt("FirstPlay", 1) == 1)
                 {
-                    if(PlayerPrefs.GetInt("FirstInstance_2") == 0)
+                    if(PlayerPrefs.GetInt("FirstInstance_6") == 0)
                     {
                         Debug.Log("Broooo");
                         PlayerPrefs.DeleteAll();
                         PlayerPrefs.SetFloat("crew", 100f);
-                        PlayerPrefs.SetInt("FirstInstance_2", 1);
+                        PlayerPrefs.SetInt("FirstInstance_6", 1);
+                        canTuto = true;
 
                     }
                     firstPlay = true;
@@ -40,12 +42,13 @@ namespace Pelicas
                     
                     Debug.Log("First Instance");
 
-
+                    
                     animIntro.SetActive(true);
                 }
                 else
                 {
                     firstPlay = false;
+                    canTuto = false;
                     Debug.Log("Hello again I guess");
                 }              
             }
@@ -54,7 +57,7 @@ namespace Pelicas
             {
                 Debug.Log("First Instance");
                 
-                PlayerPrefs.SetInt("FirstInstance_2", 1);
+                PlayerPrefs.SetInt("FirstInstance_6", 1);
                 notFirstInstance += 1;
 
             }
