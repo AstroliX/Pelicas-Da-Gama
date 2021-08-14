@@ -34,13 +34,15 @@ namespace Pelicas
 
         private void Start()
         {
-            collector.SetActive(true);
-            StartCoroutine(StartCollectingResources());
+        
+             collector.SetActive(true);
+             StartCoroutine(StartCollectingResources());
+
         }
 
         IEnumerator StartCollectingResources()
         {
-            yield return new WaitForSeconds(timeBtwResource);
+            yield return new WaitForSeconds(timeBtwResource+3);
             Instantiate(resource_1, slot_1.transform);
             yield return new WaitForSeconds(timeBtwResource);
             Instantiate(resource_2, slot_2.transform);

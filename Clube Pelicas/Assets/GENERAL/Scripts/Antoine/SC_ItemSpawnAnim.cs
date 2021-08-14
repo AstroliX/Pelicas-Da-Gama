@@ -31,10 +31,5 @@ public class SC_ItemSpawnAnim : MonoBehaviour
             size = Curve.Evaluate(lerpRatio) / 2f;
             myRT.localScale = new Vector2(size, size);
         }
-
-        /*else
-        {
-            timer = 0;
-        }*/
     }
 }
