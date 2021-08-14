@@ -180,7 +180,7 @@ namespace Pelicas
             IEnumerator StartDelay()
 
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(3);
 
                 StartCoroutine(CollectingResources());
             }
