@@ -100,6 +100,11 @@ namespace Pelicas
             
         }
 
+        public void  GoToMainMenu()
+        {
+            SceneManager.LoadScene("Scene_Menu");
+        }
+
         public void OpenHelpMenu()
         {
             helpMenu.SetActive(true);

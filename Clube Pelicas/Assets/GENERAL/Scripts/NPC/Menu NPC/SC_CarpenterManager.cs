@@ -118,6 +118,8 @@ namespace Pelicas
                 npcAnim.GetComponent<SC_NPCAnim>().PlayNPCAnimHappy();
             }
 
+
+            SetSpriteCheckbox();
         }
 
         IEnumerator YouDontHaveEnough()
@@ -162,7 +164,7 @@ namespace Pelicas
             mainMenu.SetActive(false);
             whichUpgradeMenu.SetActive(true);
 
-            SetSpriteCheckbox();
+            
         }
 
         public void GoingBackToMainMenu()

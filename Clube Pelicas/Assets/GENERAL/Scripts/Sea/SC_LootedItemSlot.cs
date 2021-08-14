@@ -6,6 +6,9 @@ namespace Pelicas
 {
     public class SC_LootedItemSlot : MonoBehaviour
     {
+        public bool[] isFull_0;
+        public GameObject[] slots_0;
+
         public bool[] isFull_1;
         public GameObject[] slots_1;
 
