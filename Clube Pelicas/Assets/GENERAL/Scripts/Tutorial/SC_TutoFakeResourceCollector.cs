@@ -12,8 +12,7 @@ namespace Pelicas
         [SerializeField] GameObject resource_4;
         [SerializeField] GameObject resource_5;
         [SerializeField] GameObject resource_6;
-        [SerializeField] GameObject resource_7;
-        [SerializeField] GameObject resource_8;
+        
 
         [Space]
         [SerializeField] GameObject slot_1;
@@ -22,8 +21,7 @@ namespace Pelicas
         [SerializeField] GameObject slot_4;
         [SerializeField] GameObject slot_5;
         [SerializeField] GameObject slot_6;
-        [SerializeField] GameObject slot_7;
-        [SerializeField] GameObject slot_8;
+        
 
         [Space]
         [SerializeField] int timeBtwResource;
@@ -54,10 +52,8 @@ namespace Pelicas
             Instantiate(resource_5, slot_5.transform);
             yield return new WaitForSeconds(timeBtwResource);
             Instantiate(resource_6, slot_6.transform);
-            yield return new WaitForSeconds(timeBtwResource);
-            Instantiate(resource_7, slot_7.transform);
-            yield return new WaitForSeconds(timeBtwResource);
-            Instantiate(resource_8, slot_8.transform);
+            
+            
         }
 
         #endregion
