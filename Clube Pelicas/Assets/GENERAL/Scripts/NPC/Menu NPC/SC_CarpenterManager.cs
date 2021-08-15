@@ -83,6 +83,7 @@ namespace Pelicas
         [SerializeField] GameObject npcAnim;
         bool isHappy;
         bool isSad;
+        bool canUpgrade;
 
         SC_UpgradeSystem upgrade;
         SC_ResourcesManager resource;
@@ -95,6 +96,11 @@ namespace Pelicas
             upgrade = FindObjectOfType<SC_UpgradeSystem>();
             resource = FindObjectOfType<SC_ResourcesManager>();
             
+        }
+
+        private void Start()
+        {
+            canUpgrade = true;
         }
 
         private void Update()
@@ -120,6 +126,13 @@ namespace Pelicas
 
 
             SetSpriteCheckbox();
+        }
+
+        IEnumerator WaitBeforeUpgrade()
+        {
+            canUpgrade = false;
+            yield return new WaitForSeconds(1.5f);
+            canUpgrade = true;
         }
 
         IEnumerator YouDontHaveEnough()
@@ -311,241 +324,264 @@ namespace Pelicas
 
         public void UpgradeHull()
         {
-            if(PlayerPrefs.GetInt("hull") == 0)
+            if (canUpgrade)
             {
-                if(PlayerPrefs.GetInt("wood") >= woodNeeded_1 && PlayerPrefs.GetInt("iron") >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+                if (PlayerPrefs.GetInt("hull") == 0)
                 {
-                    upgrade.hull += 1;
-                    PlayerPrefs.SetInt("hull", 1);
-                    hullUpgrade_1.SetActive(false);
-                    hullUpgrade_2.SetActive(true);
+                    if (PlayerPrefs.GetInt("wood") >= woodNeeded_1 && PlayerPrefs.GetInt("iron") >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+                    {
+                        upgrade.hull += 1;
+                        PlayerPrefs.SetInt("hull", 1);
+                        hullUpgrade_1.SetActive(false);
+                        hullUpgrade_2.SetActive(true);
 
-                    resource.wood -= woodNeeded_1;
-                    resource.iron -= ironNeeded_1;
-                    checkboxHull_1.GetComponent<Image>().sprite = fullbox;
+                        resource.wood -= woodNeeded_1;
+                        resource.iron -= ironNeeded_1;
+                        checkboxHull_1.GetComponent<Image>().sprite = fullbox;
 
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
 
-                    StartCoroutine(Happy());
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
                 }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
+
+                if (PlayerPrefs.GetInt("hull") == 1)
                 {
-                    StartCoroutine(YouDontHaveEnough());
+                    if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
+                    {
+                        upgrade.hull += 1;
+                        PlayerPrefs.SetInt("hull", 2);
+                        hullUpgrade_2.SetActive(false);
+                        hullUpgrade_3.SetActive(true);
+
+                        resource.wood -= woodNeeded_2;
+                        resource.iron -= ironNeeded_2;
+                        checkboxHull_2.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
+
+
+                if (PlayerPrefs.GetInt("hull") == 2)
+                {
+                    if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
+                    {
+                        upgrade.hull += 1;
+                        PlayerPrefs.SetInt("hull", 3);
+
+                        resource.wood -= woodNeeded_3;
+                        resource.iron -= ironNeeded_3;
+                        checkboxHull_3.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
+
+                if (PlayerPrefs.GetInt("hull") > 3)
+                {
+                    StartCoroutine(YouAlreadyMaxedOut());
                 }
             }
 
-            if (PlayerPrefs.GetInt("hull") == 1)
-            {
-                if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
-                {
-                    upgrade.hull += 1;
-                    PlayerPrefs.SetInt("hull", 2);
-                    hullUpgrade_2.SetActive(false);
-                    hullUpgrade_3.SetActive(true);
-
-                    resource.wood -= woodNeeded_2;
-                    resource.iron -= ironNeeded_2;
-                    checkboxHull_2.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-
-            if (PlayerPrefs.GetInt("hull") == 2)
-            {
-                if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
-                {
-                    upgrade.hull += 1;
-                    PlayerPrefs.SetInt("hull", 3);
-
-                    resource.wood -= woodNeeded_3;
-                    resource.iron -= ironNeeded_3;
-                    checkboxHull_3.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-            if(PlayerPrefs.GetInt("hull") > 3)
-            {
-                StartCoroutine(YouAlreadyMaxedOut());
-            }
         }
 
         
         public void UpgradeStock()
         {
-            if (PlayerPrefs.GetInt("stock") == 0)
+
+            if (canUpgrade)
             {
-                if ((PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1))
+                if (PlayerPrefs.GetInt("stock") == 0)
                 {
-                    StartCoroutine(YouDontHaveEnough());
+                    if ((PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1))
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                    else if (resource.wood >= woodNeeded_1 && resource.iron >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+                    {
+                        upgrade.stock += 1;
+                        PlayerPrefs.SetInt("stock", 1);
+                        stockUpgrade_1.SetActive(false);
+                        stockUpgrade_2.SetActive(true);
+
+                        resource.wood -= woodNeeded_1;
+                        resource.iron -= ironNeeded_1;
+
+                        checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
                 }
-                else if (resource.wood >= woodNeeded_1 && resource.iron >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+
+                if (PlayerPrefs.GetInt("stock") == 1)
                 {
-                    upgrade.stock += 1;
-                    PlayerPrefs.SetInt("stock", 1);
-                    stockUpgrade_1.SetActive(false);
-                    stockUpgrade_2.SetActive(true);
+                    if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
+                    {
+                        upgrade.stock += 1;
+                        PlayerPrefs.SetInt("stock", 2);
+                        stockUpgrade_2.SetActive(false);
+                        stockUpgrade_3.SetActive(true);
 
-                    resource.wood -= woodNeeded_1;
-                    resource.iron -= ironNeeded_1;
+                        resource.wood -= woodNeeded_2;
+                        resource.iron -= ironNeeded_2;
+                        checkboxStock_2.GetComponent<Image>().sprite = fullbox;
 
-                    checkboxStock_1.GetComponent<Image>().sprite = fullbox;
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
 
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
 
-                    StartCoroutine(Happy());
+
+                if (PlayerPrefs.GetInt("stock") == 2)
+                {
+                    if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
+                    {
+                        upgrade.stock += 1;
+                        PlayerPrefs.SetInt("stock", 3);
+
+                        resource.wood -= woodNeeded_3;
+                        resource.iron -= ironNeeded_3;
+                        checkboxStock_3.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
+
+                if (PlayerPrefs.GetInt("stock") > 3)
+                {
+                    StartCoroutine(YouAlreadyMaxedOut());
                 }
             }
 
-            if (PlayerPrefs.GetInt("stock") == 1)
-            {
-                if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
-                {
-                    upgrade.stock += 1;
-                    PlayerPrefs.SetInt("stock", 2);
-                    stockUpgrade_2.SetActive(false);
-                    stockUpgrade_3.SetActive(true);
-
-                    resource.wood -= woodNeeded_2;
-                    resource.iron -= ironNeeded_2;
-                    checkboxStock_2.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-
-            if (PlayerPrefs.GetInt("stock") == 2)
-            {
-                if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
-                {
-                    upgrade.stock += 1;
-                    PlayerPrefs.SetInt("stock", 3);
-
-                    resource.wood -= woodNeeded_3;
-                    resource.iron -= ironNeeded_3;
-                    checkboxStock_3.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-            if (PlayerPrefs.GetInt("stock") > 3)
-            {
-                StartCoroutine(YouAlreadyMaxedOut());
-            }
         }
 
         public void UpgradeQuarters()
         {
-            if (PlayerPrefs.GetInt("quarters") == 0)
+
+            if (canUpgrade)
             {
-                if (resource.wood >= woodNeeded_1 && resource.iron >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+                if (PlayerPrefs.GetInt("quarters") == 0)
                 {
-                    upgrade.quarters += 1;
-                    PlayerPrefs.SetInt("quarters", 1);
-                    quartersUpgrade_1.SetActive(false);
-                    quartersUpgrade_2.SetActive(true);
+                    if (resource.wood >= woodNeeded_1 && resource.iron >= ironNeeded_1 && resource.gold >= goldNeeded_1)
+                    {
+                        upgrade.quarters += 1;
+                        PlayerPrefs.SetInt("quarters", 1);
+                        quartersUpgrade_1.SetActive(false);
+                        quartersUpgrade_2.SetActive(true);
 
-                    resource.wood -= woodNeeded_1;
-                    resource.iron -= ironNeeded_1;
-                    checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
+                        resource.wood -= woodNeeded_1;
+                        resource.iron -= ironNeeded_1;
+                        checkboxQuarters_1.GetComponent<Image>().sprite = fullbox;
 
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
 
-                    StartCoroutine(Happy());
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
                 }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_1 || PlayerPrefs.GetInt("iron") < ironNeeded_1)
+
+                if (PlayerPrefs.GetInt("quarters") == 1)
                 {
-                    StartCoroutine(YouDontHaveEnough());
+                    if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
+                    {
+                        upgrade.quarters += 1;
+                        PlayerPrefs.SetInt("quarters", 2);
+                        quartersUpgrade_2.SetActive(false);
+                        quartersUpgrade_3.SetActive(true);
+
+                        resource.wood -= woodNeeded_2;
+                        resource.iron -= ironNeeded_2;
+                        checkboxQuarters_2.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
+
+
+                if (PlayerPrefs.GetInt("quarters") == 2)
+                {
+                    if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
+                    {
+                        upgrade.quarters += 1;
+                        PlayerPrefs.SetInt("quarters", 3);
+
+                        resource.wood -= woodNeeded_3;
+                        resource.iron -= ironNeeded_3;
+                        checkboxQuarters_3.GetComponent<Image>().sprite = fullbox;
+
+                        PlayerPrefs.SetInt("wood", resource.wood);
+                        PlayerPrefs.SetInt("iron", resource.iron);
+
+                        StartCoroutine(Happy());
+                        StartCoroutine(WaitBeforeUpgrade());
+                    }
+                    else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
+                    {
+                        StartCoroutine(YouDontHaveEnough());
+                    }
+                }
+
+                if (PlayerPrefs.GetInt("quarters") > 3)
+                {
+                    StartCoroutine(YouAlreadyMaxedOut());
                 }
             }
 
-            if (PlayerPrefs.GetInt("quarters") == 1)
-            {
-                if (resource.wood >= woodNeeded_2 && resource.iron >= ironNeeded_2 && resource.gold >= goldNeeded_2)
-                {
-                    upgrade.quarters += 1;
-                    PlayerPrefs.SetInt("quarters", 2);
-                    quartersUpgrade_2.SetActive(false);
-                    quartersUpgrade_3.SetActive(true);
-
-                    resource.wood -= woodNeeded_2;
-                    resource.iron -= ironNeeded_2;
-                    checkboxQuarters_2.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_2 || PlayerPrefs.GetInt("iron") < ironNeeded_2)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-
-            if (PlayerPrefs.GetInt("quarters") == 2)
-            {
-                if (resource.wood >= woodNeeded_3 && resource.iron >= ironNeeded_3 && resource.gold >= goldNeeded_3)
-                {
-                    upgrade.quarters += 1;
-                    PlayerPrefs.SetInt("quarters", 3);
-
-                    resource.wood -= woodNeeded_3;
-                    resource.iron -= ironNeeded_3;
-                    checkboxQuarters_3.GetComponent<Image>().sprite = fullbox;
-
-                    PlayerPrefs.SetInt("wood", resource.wood);
-                    PlayerPrefs.SetInt("iron", resource.iron);
-
-                    StartCoroutine(Happy());
-                }
-                else if (PlayerPrefs.GetInt("wood") < woodNeeded_3 || PlayerPrefs.GetInt("iron") < ironNeeded_3)
-                {
-                    StartCoroutine(YouDontHaveEnough());
-                }
-            }
-
-            if (PlayerPrefs.GetInt("quarters") > 3)
-            {
-                StartCoroutine(YouAlreadyMaxedOut());
-            }
         }
 
         #endregion
