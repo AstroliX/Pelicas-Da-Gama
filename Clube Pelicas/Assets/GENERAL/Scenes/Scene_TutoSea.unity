@@ -19060,7 +19060,7 @@ MonoBehaviour:
   slot_4: {fileID: 405176284}
   slot_5: {fileID: 1225025137}
   slot_6: {fileID: 906352400}
-  timeBtwResource: 2
+  timeBtwResource: 1
   collector: {fileID: 366764643}
 --- !u!114 &1982658331
 MonoBehaviour:
