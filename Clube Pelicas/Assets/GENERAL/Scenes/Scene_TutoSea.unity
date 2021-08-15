@@ -9928,18 +9928,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplayDoorLocked: {fileID: 192541440}
   sentences:
-  - Aaaah....On est bien ici non? J'aime bien la mer mais aussi l'exploration!
-  - "Ton e\xB4quipage va tout au long du voyage r\xE9cup\xE9rer des ressources."
-  - "Et tu peux en avoir deux types. Les ressources dites \"normales\" et les ressources
-    rares. Ces derni\xE8re sont assez rare mais c'est ce que le roi va vouloir."
-  - "Pour l'instant on ne peut pas aller tr\xE8s loin en mer, il faut am\xE9liorer
-    son navirre pour en d\xE9couvrir de nouveau !"
-  - "Ou encore on pourrait am\xE9liorer la cale pour revenir avec encore plus de
-    ressources !"
-  - "Enfin bref, je vais arreter de t'embeter. Pour avancer appuis sur \"A\" et \"D\".
-    Ou les fl\xE8ches directionnelles droite (<-) et gauche (->)"
-  - "Quand tu veux revenir en ville reviens me voir ! Je risque pas d'aller tr\xE8s
-    loin..."
+  - "Aaaah .... Estamos bem aqui, n\xE3o estamos? Gosto do mar mas tamb\xE9m da explora\xE7\xE3o!"
+  - "Sua tripula\xE7\xE3o ir\xE1 coletar recursos ao longo da jornada."
+  - "E voc\xEA pode ter dois tipos. Os chamados recursos \"normais\" e recursos \"raros\".
+    Eles s\xE3o mais dif\xEDcil a encontrar, mas \xE9 isso que o rei vai querer."
+  - "Por enquanto n\xE3o podemos ir muito longe no mar, temos que melhorar nosso
+    navio para descobrir novos recursos!"
+  - "Ou podemos melhorar o por\xE3o para voltar com ainda mais recursos!"
+  - "De qualquer forma, vou parar de te incomodar. Para avan\xE7ar, pressione \"A\"
+    e \"D\" ou as setas direcionais direita (<-) e esquerda (->)"
+  - "Quando voc\xEA quiser voltar para a cidade volte me ver! N\xE3o corro o risco
+    de ir muito longe ..."
   typingSpeed: 0.01
   continueButton: {fileID: 1794967180}
   menu: {fileID: 949494610}
