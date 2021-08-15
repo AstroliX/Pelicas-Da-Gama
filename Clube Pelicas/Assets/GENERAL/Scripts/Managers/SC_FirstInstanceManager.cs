@@ -21,18 +21,18 @@ namespace Pelicas
         private void Awake()
         {
             
-            notFirstInstance = PlayerPrefs.GetInt("FirstInstance_6");
+            notFirstInstance = PlayerPrefs.GetInt("FirstInstance_7");
 
             if (Application.isEditor == false)
             {
                 if (PlayerPrefs.GetInt("FirstPlay", 1) == 1)
                 {
-                    if(PlayerPrefs.GetInt("FirstInstance_6") == 0)
+                    if(PlayerPrefs.GetInt("FirstInstance_7") == 0)
                     {
                         Debug.Log("Broooo");
                         PlayerPrefs.DeleteAll();
                         PlayerPrefs.SetFloat("crew", 100f);
-                        PlayerPrefs.SetInt("FirstInstance_6", 1);
+                        PlayerPrefs.SetInt("FirstInstance_7", 1);
                         canTuto = true;
 
                     }
@@ -57,7 +57,7 @@ namespace Pelicas
             {
                 Debug.Log("First Instance");
                 
-                PlayerPrefs.SetInt("FirstInstance_6", 1);
+                PlayerPrefs.SetInt("FirstInstance_7", 1);
                 notFirstInstance += 1;
 
             }
