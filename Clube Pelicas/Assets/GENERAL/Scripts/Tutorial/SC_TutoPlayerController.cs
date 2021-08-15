@@ -24,10 +24,7 @@ namespace Pelicas
         [SerializeField] bool isSea;
 
 
-        [Space]
-        [Header("Escape Menu")]
-        [SerializeField] GameObject resourceDisplay;
-        [SerializeField] GameObject escapeMenuLogo;
+        
 
 
 
@@ -89,14 +86,6 @@ namespace Pelicas
             }
 
 
-            if (Input.GetKeyDown(KeyCode.R) && !isSea)
-            {
-                if (canDisplay && !isTalking)
-                {
-                    ShowResourceDisplay();
-                }
-
-            }
 
             if (canMove && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)))
             {
@@ -173,25 +162,7 @@ namespace Pelicas
 
         #region - PRIVATE_FUNCTIONS -
 
-        void ShowResourceDisplay()
-        {
-            if (canDisplay)
-            {
-                if (!isDisplaying)
-                {
-                    escapeMenuLogo.SetActive(false);
-                    resourceDisplay.SetActive(true);
-                    isDisplaying = true;
-                }
-                else if (isDisplaying)
-                {
-                    escapeMenuLogo.SetActive(true);
-                    resourceDisplay.SetActive(false);
-                    isDisplaying = false;
-                }
-            }
 
-        }
 
         void MoveSea()
         {
